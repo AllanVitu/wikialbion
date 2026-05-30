@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Atlas d'Albion : un guide progressif en francais pour apprendre Albion Online, de vos premiers pas jusqu'a la maitrise du sandbox."
+    />
+    <title>Atlas d'Albion | Le wiki de terrain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23d8a64b' d='M32 4 55 15v15c0 14-9 24-23 30C18 54 9 44 9 30V15z'/%3E%3Cpath fill='%23191c18' d='m32 13 12 28-12-7-12 7z'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-texture" aria-hidden="true"></div>
+    <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Retour en haut de page">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <path d="M24 3 42 11v12c0 11.5-6.9 18.7-18 23-11.1-4.3-18-11.5-18-23V11Z" />
+            <path d="m24 11 9 23-9-5-9 5Z" />
+          </svg>
+        </span>
+        <span>
+          <strong>Atlas d'Albion</strong>
+          <small>Codex de terrain</small>
+        </span>
+      </a>
+
+      <nav class="topnav" aria-label="Navigation principale">
+        <a href="#parcours">Parcours</a>
+        <a href="#codex">Codex</a>
+        <a href="#zones">Zones</a>
+        <a href="#economie">Économie</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <button class="bookmark-pill" id="open-bookmarks" type="button">
+          <span aria-hidden="true">◆</span>
+          Carnet
+          <b id="bookmark-count">0</b>
+        </button>
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <p class="sidebar-label">Sommaire</p>
+        <nav class="side-nav" aria-label="Sommaire de la page">
+          <a class="active" href="#top"><i>01</i><span>Prologue</span></a>
+          <a href="#parcours"><i>02</i><span>Votre parcours</span></a>
+          <a href="#codex"><i>03</i><span>Bibliothèque</span></a>
+          <a href="#zones"><i>04</i><span>Carte des risques</span></a>
+          <a href="#economie"><i>05</i><span>Économie royale</span></a>
+          <a href="#activites"><i>06</i><span>Activités</span></a>
+          <a href="#maintenant"><i>07</i><span>Albion en 2026</span></a>
+          <a href="#checklist"><i>08</i><span>Carnet de route</span></a>
+          <a href="#glossaire"><i>09</i><span>Glossaire</span></a>
+        </nav>
+
+        <div class="sidebar-note">
+          <p>Règle d'or</p>
+          <strong>N'emportez jamais en zone létale ce que vous ne pouvez pas racheter.</strong>
+        </div>
+
+        <div class="sidebar-status">
+          <span>Progression de lecture</span>
+          <div><i id="sidebar-progress"></i></div>
+          <small id="sidebar-progress-text">0% exploré</small>
+        </div>
+      </div>
+    </aside>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Wiki indépendant · Édition 2026</p>
+          <h1>Entrez dans Albion.<br /><em>Écrivez votre route.</em></h1>
+          <p class="hero-lead">
+            Un atlas pensé comme un compagnon de terrain. Comprenez les règles du sandbox,
+            bâtissez votre économie et apprenez à risquer juste assez pour progresser.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#parcours">Choisir mon rang <b>↓</b></a>
+            <a class="button button-ghost" href="#codex">Explorer le codex</a>
+          </div>
+          <div class="hero-stats">
+            <div><b>4</b><span>rangs de maîtrise</span></div>
+            <div><b>19</b><span>fiches pratiques</span></div>
+            <div><b>31.020.1</b><span>version vérifiée</span></div>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Carte stylisée du monde d'Albion">
+          <div class="moon"></div>
+          <div class="map-disc">
+            <span class="map-shape map-shape-one"></span>
+            <span class="map-shape map-shape-two"></span>
+            <span class="map-shape map-shape-three"></span>
+            <span class="map-route route-one"></span>
+            <span class="map-route route-two"></span>
+            <span class="map-city city-one"><i></i><small>Lymhurst</small></span>
+            <span class="map-city city-two"><i></i><small>Caerleon</small></span>
+            <span class="map-city city-three"><i></i><small>Bridgewatch</small></span>
+            <span class="map-city city-four"><i></i><small>Outlands</small></span>
+          </div>
+          <div class="hero-compass">
+            <span>N</span><i></i><b>A</b>
+          </div>
+          <div class="hero-seal">
+            <small>Leçon n° 01</small>
+            <strong>Vous êtes ce<br />que vous portez.</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="live-banner section-shell">
+        <div class="live-dot"><i></i> État du monde</div>
+        <p>
+          <strong>Radiant Wilds</strong> est en ligne depuis le 13 avril 2026.
+          Le dernier correctif vérifié est <b>Radiant Wilds Patch #2</b>, publié le 26 mai 2026.
+        </p>
+        <a href="#maintenant">Voir les nouveautés <span>→</span></a>
+      </section>
+
+      <section class="intro-grid section-shell">
+        <article>
+          <span class="chapter-number">I</span>
+          <h3>Pas de classe</h3>
+          <p>Votre arme donne vos sorts. Votre armure transforme votre rôle. Un changement d'équipement, et votre manière de jouer change avec lui.</p>
+        </article>
+        <article>
+          <span class="chapter-number">II</span>
+          <h3>Un risque choisi</h3>
+          <p>Le monde est gradué: zones sûres pour apprendre, zones létales pour gagner plus. La prudence est une compétence, pas une faiblesse.</p>
+        </article>
+        <article>
+          <span class="chapter-number">III</span>
+          <h3>Une économie vivante</h3>
+          <p>Les marchés sont locaux. Les objets sont fabriqués par des joueurs. Comprendre une ville vaut parfois davantage qu'un meilleur équipement.</p>
+        </article>
+        <article>
+          <span class="chapter-number">IV</span>
+          <h3>Votre histoire</h3>
+          <p>Combattant, récolteur, artisan, marchand ou meneur de groupe: Albion n'impose pas une campagne. Il vous donne des leviers.</p>
+        </article>
+      </section>
+
+      <section class="section-block section-shell" id="parcours">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Route conseillée</p>
+            <h2>Quel aventurier êtes-vous&nbsp;?</h2>
+          </div>
+          <p>Choisissez votre rang actuel. Le codex vous indique quoi apprendre maintenant, et ce qu'il est encore trop tôt d'optimiser.</p>
+        </div>
+
+        <div class="rank-tabs" role="tablist" aria-label="Rangs de progression">
+          <button class="rank-tab active" data-rank="debutant" type="button" role="tab">
+            <small>Rang 01</small><strong>Éclaireur</strong><span>Je débute</span>
+          </button>
+          <button class="rank-tab" data-rank="intermediaire" type="button" role="tab">
+            <small>Rang 02</small><strong>Aventurier</strong><span>Je me stabilise</span>
+          </button>
+          <button class="rank-tab" data-rank="veteran" type="button" role="tab">
+            <small>Rang 03</small><strong>Vétéran</strong><span>Je me spécialise</span>
+          </button>
+          <button class="rank-tab" data-rank="maitre" type="button" role="tab">
+            <small>Rang 04</small><strong>Maître</strong><span>Je décide</span>
+          </button>
+        </div>
+
+        <div class="rank-panel" id="rank-panel"></div>
+      </section>
+
+      <section class="section-block codex-section" id="codex">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span></span> Bibliothèque de terrain</p>
+              <h2>Le codex essentiel</h2>
+            </div>
+            <p>Des fiches courtes au départ, précises quand vous ouvrez le détail. Utilisez le carnet pour garder les sujets à relire.</p>
+          </div>
+
+          <div class="codex-toolbar">
+            <label class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <input id="article-search" type="search" placeholder="Rechercher: focus, Mists, build, zone noire..." autocomplete="off" />
+            </label>
+            <div class="filter-row" id="article-filters">
+              <button class="filter active" data-category="all" type="button">Tout</button>
+              <button class="filter" data-category="fondations" type="button">Fondations</button>
+              <button class="filter" data-category="survie" type="button">Survie</button>
+              <button class="filter" data-category="economie" type="button">Économie</button>
+              <button class="filter" data-category="combat" type="button">Combat</button>
+              <button class="filter" data-category="monde" type="button">Monde</button>
+            </div>
+          </div>
+
+          <div class="article-grid" id="article-grid"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <strong>Aucune piste trouvée.</strong>
+            <p>Essayez un terme plus simple ou revenez à l'ensemble du codex.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block section-shell" id="zones">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Avant de franchir la frontière</p>
+            <h2>Lire la couleur d'une zone</h2>
+          </div>
+          <p>Une couleur n'indique pas seulement une difficulté. Elle vous dit ce que vous risquez de perdre quand la rencontre tourne mal.</p>
+        </div>
+
+        <div class="zones-layout">
+          <div class="zones-list">
+            <article class="zone-card blue">
+              <span class="zone-orb"></span>
+              <div>
+                <small>Zone bleue · Sûre</small>
+                <h3>Apprendre sans pression</h3>
+                <p>Pas de PvP ouvert. Idéale pour débloquer votre première ligne d'équipement et comprendre vos sorts.</p>
+              </div>
+              <b>T2–T4</b>
+            </article>
+            <article class="zone-card yellow">
+              <span class="zone-orb"></span>
+              <div>
+                <small>Zone jaune · Non létale</small>
+                <h3>Tester vos réflexes</h3>
+                <p>Le PvP existe, mais une défaite vous met à terre sans vous faire perdre votre équipement. Réparations à prévoir.</p>
+              </div>
+              <b>T5</b>
+            </article>
+            <article class="zone-card red">
+              <span class="zone-orb"></span>
+              <div>
+                <small>Zone rouge · Létale</small>
+                <h3>Mesurer le danger</h3>
+                <p>Mort égale inventaire perdu. Les joueurs hostiles sont signalés par le compteur de la région. Caerleon se trouve au centre.</p>
+              </div>
+              <b>T6–T7</b>
+            </article>
+            <article class="zone-card black">
+              <span class="zone-orb"></span>
+              <div>
+                <small>Zone noire · Létale</small>
+                <h3>Accepter l'incertitude</h3>
+                <p>PvP libre, sans réputation ni compteur d'hostiles. Les Outlands offrent les ressources et enjeux les plus élevés.</p>
+              </div>
+              <b>T5–T8</b>
+            </article>
+          </div>
+
+          <aside class="zones-aside">
+            <p class="eyebrow"><span></span> Préparation létale</p>
+            <h3>Le test des dix morts</h3>
+            <p>Avant votre première sortie rouge ou noire, achetez plusieurs exemplaires d'un set simple. Votre équipement est un consommable.</p>
+            <ul>
+              <li><span>01</span> Mon set est remplaçable immédiatement.</li>
+              <li><span>02</span> J'ai une monture adaptée et une sortie en tête.</li>
+              <li><span>03</span> Je regarde les bords d'écran et les noms rouges.</li>
+              <li><span>04</span> Je rentre vendre avant de devenir gourmand.</li>
+            </ul>
+            <button class="text-link open-article" data-article="survivre-lethal" type="button">Lire le guide de survie <b>→</b></button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-block economy-section" id="economie">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span></span> Cartographie marchande</p>
+              <h2>Cinq villes, cinq avantages</h2>
+            </div>
+            <p>Les banques et marchés ne sont pas partagés entre les villes. Pour le raffinage rentable, transportez la matière vers la ville qui lui donne son bonus.</p>
+          </div>
+
+          <div class="city-grid">
+            <article class="city-card sterling">
+              <span>♜</span><small>Montagne</small><h3>Fort Sterling</h3>
+              <p>Raffinage du <strong>bois</strong> → planches</p>
+            </article>
+            <article class="city-card lymhurst">
+              <span>♧</span><small>Forêt</small><h3>Lymhurst</h3>
+              <p>Raffinage de la <strong>fibre</strong> → tissu</p>
+            </article>
+            <article class="city-card bridgewatch">
+              <span>☀</span><small>Steppe</small><h3>Bridgewatch</h3>
+              <p>Raffinage de la <strong>pierre</strong> → blocs</p>
+            </article>
+            <article class="city-card martlock">
+              <span>◆</span><small>Hautes-terres</small><h3>Martlock</h3>
+              <p>Raffinage de la <strong>peau</strong> → cuir</p>
+            </article>
+            <article class="city-card thetford">
+              <span>✦</span><small>Marais</small><h3>Thetford</h3>
+              <p>Raffinage du <strong>minerai</strong> → lingots</p>
+            </article>
+          </div>
+
+          <div class="economy-bottom">
+            <div>
+              <p class="eyebrow"><span></span> Boussole économique</p>
+              <h3>Le cycle qui crée de la valeur</h3>
+              <div class="value-chain">
+                <span>Récolter</span><i>→</i><span>Transporter</span><i>→</i><span>Raffiner</span><i>→</i><span>Fabriquer</span><i>→</i><span>Vendre</span>
+              </div>
+            </div>
+            <p>
+              Le marché bouge en permanence. Vérifiez toujours les frais de station, le prix d'achat, le prix de vente et le volume échangé avant de produire en série.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block section-shell" id="activites">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Choisir une aventure</p>
+            <h2>Un contenu pour chaque humeur</h2>
+          </div>
+          <p>Ne cherchez pas une activité parfaite. Cherchez celle qui travaille la compétence dont vous avez besoin aujourd'hui.</p>
+        </div>
+
+        <div class="activity-table">
+          <div class="activity-row activity-head">
+            <span>Activité</span><span>Format</span><span>Risque</span><span>Ce qu'elle vous apprend</span>
+          </div>
+          <button class="activity-row open-article" data-article="mists-roads" type="button">
+            <strong>Brumes / Mists</strong><span>Solo ou duo</span><em class="risk flexible">Variable</em><p>Lecture du terrain, choix des combats, autonomie</p>
+          </button>
+          <button class="activity-row open-article" data-article="pvp-instancie" type="button">
+            <strong>Arène et Arène Cristal</strong><span>1v1 ou 5v5</span><em class="risk safe">Sûr</em><p>Matchups, placement, jeu d'équipe sans perte</p>
+          </button>
+          <button class="activity-row open-article" data-article="pvp-instancie" type="button">
+            <strong>Donjons corrompus</strong><span>Solo PvPvE</span><em class="risk flexible">Variable</em><p>Combat 1v1, builds, décisions sous pression</p>
+          </button>
+          <button class="activity-row open-article" data-article="faction-warfare" type="button">
+            <strong>Guerre de factions</strong><span>Solo à armée</span><em class="risk flexible">Variable</em><p>Escarmouches, objectifs, batailles de masse</p>
+          </button>
+          <button class="activity-row open-article" data-article="mists-roads" type="button">
+            <strong>Routes d'Avalon</strong><span>Petit groupe</span><em class="risk lethal">Létal</em><p>Exploration, portails limités, discipline de groupe</p>
+          </button>
+          <button class="activity-row open-article" data-article="guilde-zvz" type="button">
+            <strong>Outlands et ZvZ</strong><span>Guilde</span><em class="risk lethal">Létal</em><p>Territoires, logistique, composition et shotcall</p>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-block now-section" id="maintenant">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span></span> Repères actuels · mai 2026</p>
+              <h2>Ce qui a changé récemment</h2>
+            </div>
+            <p>Ces éléments sont datés. Ils complètent les fondamentaux sans prétendre remplacer les notes de mise à jour officielles.</p>
+          </div>
+
+          <div class="news-grid">
+            <article class="news-feature">
+              <small>13 avril 2026 · Mise à jour majeure</small>
+              <h3>Radiant Wilds</h3>
+              <p>Refonte visuelle des biomes, optimisations de performance, nouvelle Armurerie, Arène classée 1v1 et amélioration de l'expérience manette.</p>
+              <a href="https://albiononline.com/update/radiant-wilds" target="_blank" rel="noreferrer">Page officielle <span>↗</span></a>
+            </article>
+            <article>
+              <small>23 février 2026</small>
+              <h3>Realm Divided II</h3>
+              <p>Étend la guerre de factions avec les Étendards de bataille et un Assaut de bandits remanié.</p>
+              <a href="https://steamdb.info/patchnotes/22052271/" target="_blank" rel="noreferrer">Notes de version <span>↗</span></a>
+            </article>
+            <article>
+              <small>30 juin 2025</small>
+              <h3>Abyssal Depths</h3>
+              <p>Ajoute les Profondeurs, un format PvPvE d'extraction pour petits groupes, et retravaille l'accueil des nouveaux joueurs.</p>
+              <a href="https://albiononline.com/update/abyssal-depths" target="_blank" rel="noreferrer">Page officielle <span>↗</span></a>
+            </article>
+            <article>
+              <small>3 février 2025</small>
+              <h3>Rogue Frontier</h3>
+              <p>Installe le réseau des contrebandiers dans les Outlands et donne de nouveaux appuis aux joueurs solo et petits groupes.</p>
+              <a href="https://albiononline.com/update/rogue-frontier" target="_blank" rel="noreferrer">Page officielle <span>↗</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block section-shell" id="checklist">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Votre première semaine</p>
+            <h2>Carnet de route</h2>
+          </div>
+          <p>Un cap simple pour éviter de se disperser. Vos cases restent enregistrées dans ce navigateur.</p>
+        </div>
+
+        <div class="checklist-layout">
+          <div class="checklist" id="starter-checklist"></div>
+          <aside class="checklist-score">
+            <div class="score-ring" id="score-ring">
+              <strong id="checklist-percent">0%</strong>
+              <span>accompli</span>
+            </div>
+            <p id="checklist-message">Posez les fondations de votre aventure.</p>
+            <button class="text-link" id="reset-checklist" type="button">Réinitialiser le carnet</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-block glossary-section" id="glossaire">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span></span> Parler albionais</p>
+              <h2>Le glossaire de poche</h2>
+            </div>
+            <p>Quelques mots suffisent à décoder la plupart des discussions de guilde, annonces de groupe et guides vidéo.</p>
+          </div>
+          <div class="glossary-grid" id="glossary-grid"></div>
+        </div>
+      </section>
+
+      <section class="sources section-shell">
+        <div>
+          <p class="eyebrow"><span></span> Sources et méthode</p>
+          <h2>Un atlas à garder vivant</h2>
+          <p>
+            Ce site synthétise les mécanismes stables et signale les informations datées.
+            Les équilibres d'armes, prix et activités évoluent: vérifiez les notes officielles avant une grosse dépense.
+          </p>
+        </div>
+        <div class="source-links">
+          <a href="https://albiononline.com/" target="_blank" rel="noreferrer"><b>01</b><span>Site officiel d'Albion Online</span><i>↗</i></a>
+          <a href="https://steamdb.info/app/761890/patchnotes/" target="_blank" rel="noreferrer"><b>02</b><span>Historique des notes de version</span><i>↗</i></a>
+          <a href="https://www.albiondatabase.com/" target="_blank" rel="noreferrer"><b>03</b><span>Albion Online Database</span><i>↗</i></a>
+          <a href="https://www.albioncodex.com/" target="_blank" rel="noreferrer"><b>04</b><span>Albion Codex et calculateurs</span><i>↗</i></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <path d="M24 3 42 11v12c0 11.5-6.9 18.7-18 23-11.1-4.3-18-11.5-18-23V11Z" />
+            <path d="m24 11 9 23-9-5-9 5Z" />
+          </svg>
+        </span>
+        <span><strong>Atlas d'Albion</strong><small>Codex de terrain</small></span>
+      </a>
+      <p>Wiki indépendant, non affilié à Sandbox Interactive. Conçu pour apprendre, puis oser.</p>
+      <a href="#top">Retour au sommet ↑</a>
+    </footer>
+
+    <dialog class="article-modal" id="article-modal">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Fermer la fiche">×</button>
+      <div id="modal-content"></div>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
