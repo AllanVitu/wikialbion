@@ -1,79 +1,172 @@
-const rankData = {
-  debutant: {
-    label: "Éclaireur",
-    subtitle: "Les fondations avant la performance",
-    intro:
-      "Votre première victoire consiste à ne pas vous disperser. Terminez l'introduction, essayez plusieurs armes jusqu'au palier T4 et choisissez une activité principale pour votre première semaine.",
-    objectives: [
-      "Finir le tutoriel et suivre le Journal",
-      "Débloquer un équipement complet T4",
-      "Comprendre bleu, jaune, rouge et noir",
-      "Garder une réserve d'argent liquide",
-    ],
-    route: [
-      "Testez vos sorts en zone bleue, puis jaune.",
-      "Choisissez une arme principale avant d'investir lourdement.",
-      "Vendez ce que vous ne comprenez pas encore.",
-      "Rejoignez une guilde accueillante, sans donner vos ressources.",
-    ],
-    warning: "Ne dépensez pas vos points d'apprentissage au hasard. Ils ont bien plus de valeur sur une progression lente, souvent la récolte.",
+const albionServers = {
+  europe: {
+    label: "Albion Europe",
+    api: "https://gameinfo-ams.albiononline.com/api/gameinfo",
   },
-  intermediaire: {
-    label: "Aventurier",
-    subtitle: "Transformer une routine en progression",
-    intro:
-      "Vous savez vous équiper et générer un peu d'argent. Il est temps de choisir un axe rentable, d'apprendre le coût réel d'un set et de faire vos premières sorties létales préparées.",
-    objectives: [
-      "Acheter plusieurs exemplaires d'un set",
-      "Spécialiser une ligne de combat",
-      "Comparer les marchés de deux villes",
-      "Explorer Mists, faction ou zone noire",
-    ],
-    route: [
-      "Calculez le prix exact de votre set de sortie.",
-      "Pratiquez les matchups en Arène ou Donjon corrompu.",
-      "Faites des sessions courtes en zone létale.",
-      "Tenez un carnet simple de gains et pertes.",
-    ],
-    warning: "Une bonne sortie n'est pas celle où vous restez jusqu'à mourir. Fixez un seuil de retour avant de partir.",
+  americas: {
+    label: "Albion Americas",
+    api: "https://gameinfo.albiononline.com/api/gameinfo",
   },
-  veteran: {
-    label: "Vétéran",
-    subtitle: "La spécialisation devient un avantage",
-    intro:
-      "Vous ne cherchez plus seulement à survivre. Vous choisissez un terrain, un rôle et une économie. Votre prochaine étape consiste à améliorer l'efficacité de chaque session.",
-    objectives: [
-      "Maîtriser deux variantes de build",
-      "Optimiser focus et villes bonus",
-      "Lire une composition de groupe",
-      "Construire une économie résiliente",
-    ],
-    route: [
-      "Conservez du matériel prêt à repartir dans plusieurs villes.",
-      "Apprenez quand refuser un combat pourtant gagnable.",
-      "Mesurez le profit par heure et le profit par focus.",
-      "Participez à du contenu de groupe régulier.",
-    ],
-    warning: "La valeur de votre banque ne sert à rien si elle dort en vrac. Transformez votre richesse en options prêtes à jouer.",
+  asia: {
+    label: "Albion Asia",
+    api: "https://gameinfo-sgp.albiononline.com/api/gameinfo",
   },
-  maitre: {
-    label: "Maître",
-    subtitle: "Créer les conditions de la victoire",
-    intro:
-      "À ce rang, la mécanique seule ne suffit plus. Vous gagnez par préparation, information, logistique et capacité à rendre un groupe meilleur que la somme de ses joueurs.",
-    objectives: [
-      "Lire la carte comme une ressource",
-      "Adapter un groupe à son objectif",
-      "Exploiter les cycles économiques",
-      "Transmettre des décisions simples",
-    ],
-    route: [
-      "Préparez les remplacements avant l'opération.",
-      "Déléguez le scout, la logistique et l'appel des cibles.",
-      "Gardez une doctrine courte que chacun comprend.",
-      "Analysez les défaites sans accuser l'exécution seule.",
-    ],
-    warning: "La maîtrise n'est pas de porter le set le plus cher. C'est de savoir exactement pourquoi vous le portez ici, maintenant.",
+};
+
+const defaultPlayer = {
+  name: "Kwardax",
+  server: "europe",
+};
+
+const profileStorageKey = "albion-linked-profile";
+const profileAutolinkKey = "albion-profile-autolink-disabled";
+const defaultProfileSnapshot = {
+  Name: "Kwardax",
+  Id: "kSnw42BqRaiYXfaYGOPxyw",
+  GuildName: null,
+  GuildId: "",
+  KillFame: 0,
+  DeathFame: 0,
+  LifetimeStatistics: {
+    PvE: { Total: 313 },
+    Gathering: {
+      Fiber: { Total: 31 },
+      Hide: { Total: 9 },
+      Ore: { Total: 126 },
+      Rock: { Total: 0 },
+      Wood: { Total: 13 },
+      All: { Total: 179 },
+    },
+    Crafting: { Total: 90 },
+    Timestamp: "2026-05-31T00:34:19.505433Z",
+  },
+  __server: "europe",
+  __snapshot: true,
+};
+
+const sessionPlans = {
+  prudent: {
+    30: {
+      kicker: "30 min · Entraînement sans perte",
+      title: "Patrouille d'échauffement",
+      copy: "Travaillez votre set principal sans transformer la session en préparation interminable.",
+      steps: [
+        "Équipez votre set T4 habituel et vérifiez vos compétences.",
+        "Entrez en zone jaune ou dans une Brume non létale.",
+        "Faites deux camps ou dix minutes de combat en monde ouvert.",
+        "Rentrez, réparez et identifiez le sort que vous avez le moins bien utilisé.",
+      ],
+      returnRule: "Retour: dès que les 20 minutes de terrain sont terminées.",
+      guide: "soldier-doctrine",
+    },
+    60: {
+      kicker: "60 min · Banque de guerre",
+      title: "Financer les prochaines batailles",
+      copy: "Une heure calme sert à acheter davantage de liberté pour les sorties risquées.",
+      steps: [
+        "Choisissez une ressource ou une boucle de monde ouvert familière.",
+        "Récoltez, ouvrez les coffres accessibles et vendez ce que vous n'utilisez pas.",
+        "Comparez le coût exact de votre paquetage principal au marché.",
+        "Achetez un remplacement supplémentaire si votre réserve est insuffisante.",
+      ],
+      returnRule: "Retour: lorsque votre inventaire vaut au moins le prix d'un set.",
+      guide: "silver",
+    },
+    90: {
+      kicker: "90+ min · Formation complète",
+      title: "Répéter avant de risquer",
+      copy: "Enchaînez économie, entraînement et rangement avec une intention unique: rendre votre prochain départ plus fluide.",
+      steps: [
+        "Gagnez l'équivalent d'un set avec votre boucle économique.",
+        "Jouez quelques combats non létaux en faction, Arène ou Brume.",
+        "Préparez trois paquetages identiques dans votre banque.",
+        "Notez votre compétence la plus fiable et celle qui mérite encore du travail.",
+      ],
+      returnRule: "Retour: une fois trois départs prêts dans la banque.",
+      guide: "daily-plan",
+    },
+  },
+  progression: {
+    30: {
+      kicker: "30 min · Front royal",
+      title: "Escarmouche de faction",
+      copy: "Apprenez à suivre un mouvement collectif sans risquer votre économie.",
+      steps: [
+        "Activez votre faction et rejoignez un front en zone jaune.",
+        "Restez avec un groupe et observez qui engage, qui recule et pourquoi.",
+        "Conservez une compétence de fuite au lieu de tout utiliser pour poursuivre.",
+        "Rentrez après quelques objectifs, même si le groupe continue.",
+      ],
+      returnRule: "Retour: après trois objectifs ou votre première mise à terre.",
+      guide: "faction-warfare",
+    },
+    60: {
+      kicker: "60 min · Autonomie",
+      title: "Reconnaissance dans les Brumes",
+      copy: "Les Brumes non létales offrent un bon terrain pour décider seul quand combattre et quand rompre.",
+      steps: [
+        "Partez avec votre set principal et cherchez une Brume non létale.",
+        "Faites les camps simples en observant les noms qui approchent.",
+        "Inspectez les joueurs croisés avant d'accepter un combat.",
+        "Rentrez vendre, puis ajustez une seule pièce si une faiblesse est évidente.",
+      ],
+      returnRule: "Retour: après deux camps et au moins une décision de repli.",
+      guide: "mists-roads",
+    },
+    90: {
+      kicker: "90+ min · Première opération",
+      title: "Faction, économie, débrief",
+      copy: "Une sortie longue reste lisible quand elle est divisée en trois blocs simples.",
+      steps: [
+        "Jouez 45 minutes de faction en zone jaune avec votre paquetage habituel.",
+        "Utilisez 25 minutes pour refaire votre réserve d'argent.",
+        "Achetez ou préparez un remplacement.",
+        "Gardez 10 minutes pour ranger et retenir une seule erreur de combat.",
+      ],
+      returnRule: "Retour: avant que le dernier remplacement entame votre réserve.",
+      guide: "daily-plan",
+    },
+  },
+  lethal: {
+    30: {
+      kicker: "30 min · Baptême du risque",
+      title: "Sortie létale courte",
+      copy: "Entrez léger. Votre victoire consiste à apprendre un trajet et à rentrer avant la gourmandise.",
+      steps: [
+        "Équipez un set que vous pouvez racheter immédiatement.",
+        "Choisissez une entrée rouge ou noire et repérez votre voie de retour.",
+        "Restez en mouvement, observez les bords d'écran et faites un objectif modeste.",
+        "Revenez déposer votre butin sans négocier cinq minutes de plus.",
+      ],
+      returnRule: "Retour: après 15 minutes dehors ou dès qu'un set est remboursé.",
+      guide: "survivre-lethal",
+    },
+    60: {
+      kicker: "60 min · Frontière ouverte",
+      title: "Reconnaissance létale disciplinée",
+      copy: "Cette mission travaille le calme: préparer la perte, lire le terrain et ne pas surestimer une bonne série.",
+      steps: [
+        "Partez avec un paquetage économique et un second prêt en banque.",
+        "Explorez une Brume létale ou une route noire proche d'une sortie connue.",
+        "N'acceptez que les combats dont vous comprenez l'objectif.",
+        "Déposez votre butin dès qu'il rembourse votre équipement.",
+      ],
+      returnRule: "Retour: à un set remboursé, ou immédiatement si votre attention baisse.",
+      guide: "survivre-lethal",
+    },
+    90: {
+      kicker: "90+ min · Expédition",
+      title: "Deux sorties, jamais une fuite en avant",
+      copy: "Divisez l'aventure en deux opérations indépendantes. Une mort ne doit pas dicter la suivante.",
+      steps: [
+        "Préparez deux sets identiques et fixez une limite de perte avant de partir.",
+        "Faites une première sortie létale de 30 à 40 minutes maximum.",
+        "Déposez tout, puis prenez cinq minutes pour décider calmement si vous repartez.",
+        "Arrêtez après la seconde sortie, que son résultat soit excellent ou mauvais.",
+      ],
+      returnRule: "Retour: deux sorties maximum et aucune tentative de revanche.",
+      guide: "survivre-lethal",
+    },
   },
 };
 
@@ -450,6 +543,36 @@ const articles = [
     `,
   },
   {
+    id: "soldier-doctrine",
+    icon: "⚔",
+    category: "combat",
+    rank: "Éclaireur",
+    time: "9 min",
+    title: "Doctrine du soldat autonome",
+    summary: "Construire un premier paquetage de mêlée, le répéter et savoir quand l'adapter.",
+    body: `
+      <h3>Votre rôle avant votre équipement</h3>
+      <p>Dans Albion, soldat n'est pas une classe verrouillée. Pour commencer, votre rôle est celui d'un combattant autonome: vous devez pouvoir terminer un combat simple, survivre à une erreur et quitter une situation défavorable. Choisissez une arme de mêlée dont vous comprenez naturellement le rythme, puis gardez-la assez longtemps pour apprendre ses limites.</p>
+      <h3>Un paquetage de départ lisible</h3>
+      <p>Pour vos premiers essais, utilisez une arme abordable des familles épée, hache ou masse selon le style qui vous plaît. Ajoutez une défense ou un soin personnel, une option de mobilité et une monture remplaçable. Une cape simple, un sac et une nourriture peu coûteuse suffisent tant que vous apprenez.</p>
+      <div class="modal-callout">La fantaisie du soldat ne vous oblige pas à porter quatre pièces de plaque. En solo, une armure plus offensive ou dotée de sustain peut être plus utile. Gardez la plaque pour les rôles de contrôle et de première ligne qui en ont réellement besoin.</div>
+      <h3>Trois questions avant chaque départ</h3>
+      <ul>
+        <li>Quel sort me permet de tenir lorsque l'adversaire engage?</li>
+        <li>Quel sort dois-je conserver pour poursuivre ou rompre le combat?</li>
+        <li>Puis-je racheter ce set plusieurs fois sans toucher à toute ma banque?</li>
+      </ul>
+      <h3>Votre évolution naturelle</h3>
+      <ol>
+        <li>Apprenez un seul set T4 en zone jaune et dans les Brumes non létales.</li>
+        <li>Préparez dix remplacements avant de multiplier les sorties létales.</li>
+        <li>Utilisez l'Armurerie en jeu pour observer les équipements joués dans votre activité.</li>
+        <li>Ajoutez ensuite un second paquetage de groupe: dégâts de mêlée, contrôle de première ligne ou défense selon les besoins de votre guilde.</li>
+      </ol>
+      <div class="modal-callout">Ne changez pas tout après une défaite. Ajustez une pièce seulement lorsque vous pouvez expliquer le problème qu'elle résout.</div>
+    `,
+  },
+  {
     id: "daily-plan",
     icon: "☷",
     category: "fondations",
@@ -570,12 +693,14 @@ const articles = [
 
 const checklistItems = [
   ["tutorial", "Terminer le tutoriel", "Suivre l'introduction et ouvrir le Journal d'Albion."],
-  ["tier4", "Débloquer un set T4", "Choisir une arme et essayer les trois matières d'armure."],
-  ["market", "Utiliser le marché", "Passer une vente puis comparer un prix dans une autre ville."],
-  ["yellow", "Explorer une zone jaune", "Tester vos sorts et observer la perte de durabilité."],
-  ["activity", "Choisir une activité", "Récolte, combat, économie ou faction pour votre première routine."],
+  ["tier4", "Débloquer votre set T4", "Choisir une arme de mêlée et un paquetage simple à répéter."],
+  ["market", "Chiffrer votre paquetage", "Connaître son prix total au marché avant de le risquer."],
+  ["yellow", "Patrouiller en zone jaune", "Tester tenue, poursuite et fuite sans perdre votre équipement."],
+  ["mist", "Explorer une Brume", "Finir deux camps non létaux et refuser au moins un mauvais combat."],
+  ["faction", "Rejoindre un front de faction", "Suivre un groupe en zone jaune et observer ses mouvements."],
   ["replacement", "Préparer trois sets", "Pouvoir repartir rapidement après une défaite."],
-  ["lethal", "Faire une sortie létale", "Entrer avec un équipement que vous acceptez de perdre."],
+  ["warbank", "Financer dix sets", "Construire votre banque de guerre avant le luxe."],
+  ["lethal", "Faire une sortie létale", "Entrer léger, fixer votre retour et accepter la perte."],
   ["guild", "Parler à une guilde", "Poser des questions sur ses activités et ses attentes."],
 ];
 
@@ -595,7 +720,6 @@ const glossary = [
 ];
 
 const ui = {
-  rankPanel: document.querySelector("#rank-panel"),
   articleGrid: document.querySelector("#article-grid"),
   search: document.querySelector("#article-search"),
   filters: document.querySelector("#article-filters"),
@@ -616,31 +740,282 @@ const ui = {
   menuToggle: document.querySelector("#menu-toggle"),
   sidebar: document.querySelector("#sidebar"),
   installApp: document.querySelector("#install-app"),
+  missionKicker: document.querySelector("#mission-kicker"),
+  missionTitle: document.querySelector("#mission-title"),
+  missionCopy: document.querySelector("#mission-copy"),
+  missionSteps: document.querySelector("#mission-steps"),
+  missionReturn: document.querySelector("#mission-return"),
+  missionGuide: document.querySelector("#mission-guide"),
+  profileShortcut: document.querySelector("#profile-shortcut"),
+  profileShortcutLabel: document.querySelector("#profile-shortcut-label"),
+  profileForm: document.querySelector("#profile-form"),
+  playerName: document.querySelector("#player-name"),
+  playerServer: document.querySelector("#player-server"),
+  linkProfile: document.querySelector("#link-profile"),
+  profileStatus: document.querySelector("#profile-status"),
+  profileEmpty: document.querySelector("#profile-empty"),
+  profileLoaded: document.querySelector("#profile-loaded"),
+  profileAvatar: document.querySelector("#profile-avatar"),
+  profileServer: document.querySelector("#profile-server"),
+  profileName: document.querySelector("#profile-name"),
+  profileMeta: document.querySelector("#profile-meta"),
+  profilePve: document.querySelector("#profile-pve"),
+  profileGathering: document.querySelector("#profile-gathering"),
+  profileCrafting: document.querySelector("#profile-crafting"),
+  profilePvp: document.querySelector("#profile-pvp"),
+  profileStage: document.querySelector("#profile-stage"),
+  profileRouteTitle: document.querySelector("#profile-route-title"),
+  profileRouteCopy: document.querySelector("#profile-route-copy"),
+  profileRouteList: document.querySelector("#profile-route-list"),
+  profileRefreshDate: document.querySelector("#profile-refresh-date"),
+  unlinkProfile: document.querySelector("#unlink-profile"),
+  heroStageValue: document.querySelector("#hero-stage-value"),
+  heroStageLabel: document.querySelector("#hero-stage-label"),
+  heroFocusValue: document.querySelector("#hero-focus-value"),
+  heroFocusLabel: document.querySelector("#hero-focus-label"),
+  heroTargetValue: document.querySelector("#hero-target-value"),
+  heroTargetLabel: document.querySelector("#hero-target-label"),
+  briefTitle: document.querySelector("#brief-title"),
+  briefCopy: document.querySelector("#brief-copy"),
+  briefPriorities: document.querySelector("#brief-priorities"),
 };
 
 let activeCategory = "all";
 let bookmarkOnly = false;
 let deferredInstallPrompt = null;
+let sessionTime = localStorage.getItem("albion-session-time") || "30";
+let sessionRisk = localStorage.getItem("albion-session-risk") || "prudent";
+let linkedProfile =
+  JSON.parse(localStorage.getItem(profileStorageKey) || "null") ||
+  (localStorage.getItem(profileAutolinkKey) ? null : defaultProfileSnapshot);
 const bookmarks = new Set(JSON.parse(localStorage.getItem("albion-bookmarks") || "[]"));
 const completedTasks = new Set(JSON.parse(localStorage.getItem("albion-checklist") || "[]"));
 
-function renderRank(rankId) {
-  const rank = rankData[rankId];
-  ui.rankPanel.innerHTML = `
-    <div class="rank-panel-main">
-      <p class="eyebrow"><span></span> ${rank.subtitle}</p>
-      <h3>${rank.label}</h3>
-      <p>${rank.intro}</p>
-      <div class="rank-objectives">
-        ${rank.objectives.map((objective) => `<div><span>◆</span>${objective}</div>`).join("")}
-      </div>
-    </div>
-    <aside class="rank-panel-side">
-      <h4>Votre route maintenant</h4>
-      <ul>${rank.route.map((step) => `<li><span>→</span>${step}</li>`).join("")}</ul>
-      <p class="rank-warning">${rank.warning}</p>
-    </aside>
+function formatFame(value) {
+  return new Intl.NumberFormat("fr-FR").format(Math.max(0, Number(value) || 0));
+}
+
+function getProfileStats(profile) {
+  const lifetime = profile.LifetimeStatistics || {};
+  const gathering = lifetime.Gathering || {};
+  const resources = [
+    ["Fiber", "fibre"],
+    ["Hide", "peau"],
+    ["Ore", "minerai"],
+    ["Rock", "pierre"],
+    ["Wood", "bois"],
+  ].map(([key, label]) => ({
+    label,
+    value: Number(gathering[key]?.Total) || 0,
+  }));
+  const dominantResource = [...resources].sort((a, b) => b.value - a.value)[0];
+  return {
+    pve: Number(lifetime.PvE?.Total) || 0,
+    gathering: Number(gathering.All?.Total) || 0,
+    crafting: Number(lifetime.Crafting?.Total) || 0,
+    pvp: (Number(profile.KillFame) || 0) + (Number(profile.DeathFame) || 0),
+    dominantResource: dominantResource?.value ? dominantResource : null,
+  };
+}
+
+function getProfileRoute(profile) {
+  const stats = getProfileStats(profile);
+  const resource = stats.dominantResource?.label || "ressource principale";
+  if (stats.pve < 10000) {
+    return {
+      stage: 0,
+      stageLabel: "Chapitre 01 · Recrue",
+      title: "Finir vos fondations",
+      copy: `${profile.Name} commence son aventure. La priorité n'est pas la performance: c'est de débloquer un paquetage T4 simple et de comprendre chaque sort.`,
+      priorities: [
+        "Terminer le tutoriel et ouvrir le Journal d'Albion",
+        "Débloquer une arme de mêlée et un paquetage complet T4",
+        stats.dominantResource
+          ? `Garder le ${resource} comme première boucle économique`
+          : "Tester une première ressource pour financer les remplacements",
+      ],
+      hero: ["01", "chapitre conseillé", "T4", "prochain cap", resource, "ressource repérée"],
+    };
+  }
+  if (stats.pve < 100000) {
+    return {
+      stage: 1,
+      stageLabel: "Chapitre 02 · Patrouilleur",
+      title: "Stabiliser votre routine",
+      copy: `${profile.Name} possède les bases. Il est temps de répéter un set, pratiquer la faction non létale et transformer la récolte de ${resource} en réserve de départs.`,
+      priorities: [
+        "Préparer trois copies identiques du paquetage principal",
+        "Jouer faction et Brumes non létales pour apprendre le repli",
+        `Financer la banque de guerre avec votre boucle ${resource}`,
+      ],
+      hero: ["02", "chapitre conseillé", "3", "sets prêts en banque", resource, "boucle économique"],
+    };
+  }
+  if (stats.pvp < 50000 || !profile.GuildName) {
+    return {
+      stage: 2,
+      stageLabel: "Chapitre 03 · Frontières",
+      title: "Oser les frontières létales",
+      copy: `${profile.Name} a suffisamment vécu dans le monde ouvert pour travailler le risque choisi. Les prochaines sorties doivent rester courtes, abordables et faciles à répéter.`,
+      priorities: [
+        "Constituer dix remplacements avant de chercher le luxe",
+        "Faire des sorties létales courtes avec une condition de retour",
+        profile.GuildName ? "Ajouter un second rôle utile au groupe" : "Chercher une guilde saine pour ouvrir le contenu collectif",
+      ],
+      hero: ["03", "chapitre conseillé", "10", "sets avant le luxe", "BZ", "terrain à découvrir"],
+    };
+  }
+  return {
+    stage: 3,
+    stageLabel: "Chapitre 04 · Compagnie",
+    title: "Devenir utile à votre compagnie",
+    copy: `${profile.Name} a déjà une vraie trace de combat. Le meilleur gain vient désormais de la spécialisation, de la logistique et d'un second rôle compris par votre groupe.`,
+    priorities: [
+      "Préparer deux rôles adaptés aux sorties de guilde",
+      "Garder plusieurs remplacements prêts avant chaque opération",
+      "Débriefer une décision précise après chaque défaite",
+    ],
+    hero: ["04", "chapitre conseillé", "2", "rôles complémentaires", "CTA", "prochain terrain"],
+  };
+}
+
+function setProfileStatus(message, isError = false) {
+  ui.profileStatus.textContent = message;
+  ui.profileStatus.classList.toggle("error", isError);
+}
+
+function renderDefaultPath() {
+  ui.profileShortcut.classList.remove("connected");
+  ui.profileShortcutLabel.textContent = `Lier ${defaultPlayer.name}`;
+  ui.profileEmpty.hidden = false;
+  ui.profileLoaded.hidden = true;
+  ui.heroStageValue.textContent = "4";
+  ui.heroStageLabel.textContent = "chapitres de campagne";
+  ui.heroFocusValue.textContent = "1";
+  ui.heroFocusLabel.textContent = "doctrine de départ";
+  ui.heroTargetValue.textContent = "10";
+  ui.heroTargetLabel.textContent = "sets avant le luxe";
+  ui.briefTitle.textContent = "Devenir un soldat autonome.";
+  ui.briefCopy.textContent =
+    "Vous n'avez pas besoin de tout apprendre en même temps. Votre priorité est de savoir sortir seul, gagner de quoi repartir et rejoindre un front quand vous voulez davantage d'action.";
+  ui.briefPriorities.innerHTML = `
+    <li><b>01</b><span>Maîtriser un set simple et bon marché</span></li>
+    <li><b>02</b><span>Financer dix remplacements sans stress</span></li>
+    <li><b>03</b><span>Apprendre la faction avant le grand bain</span></li>
   `;
+  document.querySelectorAll("[data-campaign-stage]").forEach((card) => {
+    card.classList.toggle("active", card.dataset.campaignStage === "0");
+  });
+}
+
+function renderLinkedProfile(profile) {
+  const stats = getProfileStats(profile);
+  const route = getProfileRoute(profile);
+  const server = albionServers[profile.__server] || albionServers.europe;
+  const publicDate = profile.LifetimeStatistics?.Timestamp
+    ? new Date(profile.LifetimeStatistics.Timestamp).toLocaleDateString("fr-FR")
+    : "date non communiquée";
+  ui.profileShortcut.classList.add("connected");
+  ui.profileShortcutLabel.textContent = profile.Name;
+  ui.profileEmpty.hidden = true;
+  ui.profileLoaded.hidden = false;
+  ui.profileAvatar.textContent = profile.Name.slice(0, 1).toLocaleUpperCase("fr");
+  ui.profileServer.textContent = server.label;
+  ui.profileName.textContent = profile.Name;
+  ui.profileMeta.textContent = profile.GuildName ? `Guilde: ${profile.GuildName}` : "Sans guilde · trace publique";
+  ui.profilePve.textContent = formatFame(stats.pve);
+  ui.profileGathering.textContent = formatFame(stats.gathering);
+  ui.profileCrafting.textContent = formatFame(stats.crafting);
+  ui.profilePvp.textContent = formatFame(stats.pvp);
+  ui.profileStage.textContent = route.stageLabel;
+  ui.profileRouteTitle.textContent = route.title;
+  ui.profileRouteCopy.textContent = route.copy;
+  ui.profileRouteList.innerHTML = route.priorities.map((priority) => `<li>${priority}</li>`).join("");
+  ui.profileRefreshDate.textContent = `Statistiques publiques mises à jour le ${publicDate}`;
+  ui.heroStageValue.textContent = route.hero[0];
+  ui.heroStageLabel.textContent = route.hero[1];
+  ui.heroFocusValue.textContent = route.hero[2];
+  ui.heroFocusLabel.textContent = route.hero[3];
+  ui.heroTargetValue.textContent = route.hero[4];
+  ui.heroTargetLabel.textContent = route.hero[5];
+  ui.briefTitle.textContent = `${profile.Name}, votre prochain cap.`;
+  ui.briefCopy.textContent = route.copy;
+  ui.briefPriorities.innerHTML = route.priorities
+    .map((priority, index) => `<li><b>0${index + 1}</b><span>${priority}</span></li>`)
+    .join("");
+  document.querySelectorAll("[data-campaign-stage]").forEach((card) => {
+    card.classList.toggle("active", Number(card.dataset.campaignStage) === route.stage);
+  });
+}
+
+async function requestJson(url, timeout = 7000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
+  try {
+    const response = await fetch(url, {
+      headers: { Accept: "application/json" },
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function requestAlbionJson(serverKey, path) {
+  const server = albionServers[serverKey];
+  if (!server) throw new Error("Serveur Albion inconnu.");
+  const url = `${server.api}${path}`;
+  try {
+    return await requestJson(url);
+  } catch {
+    const relay = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+    return await requestJson(relay, 16000);
+  }
+}
+
+async function linkPublicProfile(name, serverKey) {
+  const cleanName = name.trim();
+  if (!cleanName) return;
+  ui.linkProfile.disabled = true;
+  setProfileStatus(`Recherche de ${cleanName} sur ${albionServers[serverKey].label}...`);
+  try {
+    const search = await requestAlbionJson(serverKey, `/search?q=${encodeURIComponent(cleanName)}`);
+    const player = search.players?.find(({ Name }) => Name.toLocaleLowerCase("fr") === cleanName.toLocaleLowerCase("fr"));
+    if (!player) throw new Error(`Personnage introuvable sur ${albionServers[serverKey].label}.`);
+    const profile = await requestAlbionJson(serverKey, `/players/${encodeURIComponent(player.Id)}`);
+    linkedProfile = { ...profile, __server: serverKey, __linkedAt: new Date().toISOString() };
+    localStorage.setItem(profileStorageKey, JSON.stringify(linkedProfile));
+    localStorage.removeItem(profileAutolinkKey);
+    renderLinkedProfile(linkedProfile);
+    setProfileStatus(`${profile.Name} est lié localement. Votre route a été recalculée.`);
+  } catch (error) {
+    setProfileStatus(
+      linkedProfile
+        ? "Actualisation indisponible. La dernière fiche publique conservée localement reste affichée."
+        : error.message || "Impossible de lire la fiche publique pour le moment.",
+      true,
+    );
+  } finally {
+    ui.linkProfile.disabled = false;
+  }
+}
+
+function renderMission() {
+  const mission = sessionPlans[sessionRisk][sessionTime];
+  ui.missionKicker.textContent = mission.kicker;
+  ui.missionTitle.textContent = mission.title;
+  ui.missionCopy.textContent = mission.copy;
+  ui.missionSteps.innerHTML = mission.steps.map((step) => `<li>${step}</li>`).join("");
+  ui.missionReturn.textContent = mission.returnRule;
+  ui.missionGuide.dataset.article = mission.guide;
+  document.querySelectorAll("[data-session-time]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.sessionTime === sessionTime);
+  });
+  document.querySelectorAll("[data-session-risk]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.sessionRisk === sessionRisk);
+  });
 }
 
 function getFilteredArticles() {
@@ -752,12 +1127,33 @@ function updateActiveSection() {
   });
 }
 
-document.querySelectorAll(".rank-tab").forEach((button) => {
+document.querySelectorAll("[data-session-time]").forEach((button) => {
   button.addEventListener("click", () => {
-    document.querySelector(".rank-tab.active").classList.remove("active");
-    button.classList.add("active");
-    renderRank(button.dataset.rank);
+    sessionTime = button.dataset.sessionTime;
+    localStorage.setItem("albion-session-time", sessionTime);
+    renderMission();
   });
+});
+
+document.querySelectorAll("[data-session-risk]").forEach((button) => {
+  button.addEventListener("click", () => {
+    sessionRisk = button.dataset.sessionRisk;
+    localStorage.setItem("albion-session-risk", sessionRisk);
+    renderMission();
+  });
+});
+
+ui.profileForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  linkPublicProfile(ui.playerName.value, ui.playerServer.value);
+});
+
+ui.unlinkProfile.addEventListener("click", () => {
+  linkedProfile = null;
+  localStorage.removeItem(profileStorageKey);
+  localStorage.setItem(profileAutolinkKey, "true");
+  renderDefaultPath();
+  setProfileStatus("Personnage délié. Vous pouvez relancer une analyse quand vous voulez.");
 });
 
 ui.search.addEventListener("input", renderArticles);
@@ -849,11 +1245,26 @@ window.addEventListener("scroll", () => {
   updateActiveSection();
 });
 
-renderRank("debutant");
+renderMission();
 renderArticles();
 renderChecklist();
 renderGlossary();
 updateReadingProgress();
+renderDefaultPath();
+
+if (linkedProfile) {
+  ui.playerName.value = linkedProfile.Name;
+  ui.playerServer.value = linkedProfile.__server || defaultPlayer.server;
+  renderLinkedProfile(linkedProfile);
+  if (location.protocol === "file:") {
+    setProfileStatus(`${linkedProfile.Name} est chargé depuis la dernière fiche publique locale. Utilisez Analyser pour actualiser.`);
+  } else {
+    setProfileStatus(`${linkedProfile.Name} a été restauré depuis ce navigateur. Actualisation en cours...`);
+    linkPublicProfile(linkedProfile.Name, linkedProfile.__server || defaultPlayer.server);
+  }
+} else if (location.protocol !== "file:") {
+  linkPublicProfile(defaultPlayer.name, defaultPlayer.server);
+}
 
 if ("serviceWorker" in navigator && location.protocol !== "file:") {
   window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));

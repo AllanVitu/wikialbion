@@ -1,4 +1,4 @@
-const CACHE_NAME = "atlas-albion-v2";
+const CACHE_NAME = "atlas-albion-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -9,6 +9,7 @@ const APP_SHELL = [
   "./assets/icons/atlas-192.png",
   "./assets/icons/atlas-512.png",
   "./assets/icons/atlas-maskable-512.png",
+  "./assets/icons/atlas-1024.png",
 ];
 
 self.addEventListener("install", (event) => {

@@ -8,7 +8,7 @@
       content="Atlas d'Albion : un guide progressif en francais pour apprendre Albion Online, de vos premiers pas jusqu'a la maitrise du sandbox."
     />
     <meta name="theme-color" content="#0b2940" />
-    <title>Atlas d'Albion | Le wiki de terrain</title>
+    <title>Atlas d'Albion | Journal d'un aventurier-soldat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,14 +35,18 @@
       </a>
 
       <nav class="topnav" aria-label="Navigation principale">
-        <a href="#orientation">S'orienter</a>
-        <a href="#parcours">Parcours</a>
+        <a href="#profil">Mon profil</a>
+        <a href="#mission">Ma sortie</a>
+        <a href="#campagne">Ma campagne</a>
         <a href="#codex">Codex</a>
-        <a href="#zones">Zones</a>
       </nav>
 
       <div class="topbar-actions">
         <button class="install-pill" id="install-app" type="button" hidden>Installer l'app</button>
+        <a class="profile-pill" id="profile-shortcut" href="#profil">
+          <span aria-hidden="true"></span>
+          <b id="profile-shortcut-label">Lier Kwardax</b>
+        </a>
         <button class="bookmark-pill" id="open-bookmarks" type="button">
           <span aria-hidden="true">◆</span>
           Carnet
@@ -65,21 +69,18 @@
         <p class="sidebar-label">Sommaire</p>
         <nav class="side-nav" aria-label="Sommaire de la page">
           <a class="active" href="#top"><i>01</i><span>Prologue</span></a>
-          <a href="#orientation"><i>02</i><span>S'orienter</span></a>
-          <a href="#parcours"><i>03</i><span>Votre parcours</span></a>
-          <a href="#codex"><i>04</i><span>Bibliothèque</span></a>
-          <a href="#zones"><i>05</i><span>Carte des risques</span></a>
-          <a href="#economie"><i>06</i><span>Économie royale</span></a>
+          <a href="#profil"><i>02</i><span>Mon personnage</span></a>
+          <a href="#mission"><i>03</i><span>Prochaine sortie</span></a>
+          <a href="#campagne"><i>04</i><span>Ma campagne</span></a>
+          <a href="#codex"><i>05</i><span>Bibliothèque</span></a>
+          <a href="#zones"><i>06</i><span>Risques</span></a>
           <a href="#activites"><i>07</i><span>Activités</span></a>
-          <a href="#maintenant"><i>08</i><span>Albion en 2026</span></a>
-          <a href="#checklist"><i>09</i><span>Carnet de route</span></a>
-          <a href="#glossaire"><i>10</i><span>Glossaire</span></a>
-          <a href="#faq"><i>11</i><span>FAQ</span></a>
+          <a href="#checklist"><i>08</i><span>Carnet de route</span></a>
         </nav>
 
         <div class="sidebar-note">
-          <p>Règle d'or</p>
-          <strong>N'emportez jamais en zone létale ce que vous ne pouvez pas racheter.</strong>
+          <p>Doctrine</p>
+          <strong>Sortir léger. Apprendre vite. Revenir avec une leçon.</strong>
         </div>
 
         <div class="sidebar-status">
@@ -93,20 +94,20 @@
     <main id="top">
       <section class="hero section-shell">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> Guide indépendant · Édition 2026</p>
-          <h1>Votre boussole<br /><em>pour Albion.</em></h1>
+          <p class="eyebrow"><span></span> Journal personnel · Aventurier-soldat</p>
+          <h1>Votre campagne<br /><em>commence ici.</em></h1>
           <p class="hero-lead">
-            Un atlas pensé comme un compagnon de terrain. Comprenez les règles du sandbox,
-            bâtissez votre économie et apprenez à risquer juste assez pour progresser.
+            Une seule route lisible pour devenir autonome au combat, financer vos défaites
+            et entrer progressivement dans les vraies aventures d'Albion.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#parcours">Choisir mon rang <b>↓</b></a>
-            <a class="button button-ghost" href="#codex">Explorer le codex</a>
+            <a class="button button-primary" href="#mission">Préparer ma sortie <b>↓</b></a>
+            <a class="button button-ghost" href="#campagne">Voir ma route</a>
           </div>
           <div class="hero-stats">
-            <div><b>4</b><span>rangs de maîtrise</span></div>
-            <div><b>24</b><span>fiches pratiques</span></div>
-            <div><b>31.020.1</b><span>version vérifiée</span></div>
+            <div><b id="hero-stage-value">4</b><span id="hero-stage-label">chapitres de campagne</span></div>
+            <div><b id="hero-focus-value">1</b><span id="hero-focus-label">doctrine de départ</span></div>
+            <div><b id="hero-target-value">10</b><span id="hero-target-label">sets avant le luxe</span></div>
           </div>
         </div>
 
@@ -127,8 +128,8 @@
             <span>N</span><i></i><b>A</b>
           </div>
           <div class="hero-seal">
-            <small>Principe n° 01</small>
-            <strong>Préparez la route.<br />Puis improvisez.</strong>
+            <small>Doctrine n° 01</small>
+            <strong>Votre équipement<br />est un consommable.</strong>
           </div>
         </div>
       </section>
@@ -142,90 +143,185 @@
         <a href="#maintenant">Voir les nouveautés <span>→</span></a>
       </section>
 
-      <section class="intro-grid section-shell">
-        <article>
-          <span class="chapter-number">I</span>
-          <h3>Pas de classe</h3>
-          <p>Votre arme donne vos sorts. Votre armure transforme votre rôle. Un changement d'équipement, et votre manière de jouer change avec lui.</p>
-        </article>
-        <article>
-          <span class="chapter-number">II</span>
-          <h3>Un risque choisi</h3>
-          <p>Le monde est gradué: zones sûres pour apprendre, zones létales pour gagner plus. La prudence est une compétence, pas une faiblesse.</p>
-        </article>
-        <article>
-          <span class="chapter-number">III</span>
-          <h3>Une économie vivante</h3>
-          <p>Les marchés sont locaux. Les objets sont fabriqués par des joueurs. Comprendre une ville vaut parfois davantage qu'un meilleur équipement.</p>
-        </article>
-        <article>
-          <span class="chapter-number">IV</span>
-          <h3>Votre histoire</h3>
-          <p>Combattant, récolteur, artisan, marchand ou meneur de groupe: Albion n'impose pas une campagne. Il vous donne des leviers.</p>
-        </article>
+      <section class="profile-hub section-shell" id="profil">
+        <div class="profile-hub-heading">
+          <div>
+            <p class="eyebrow"><span></span> Centre de commandement</p>
+            <h2>Une route calculée pour votre personnage.</h2>
+          </div>
+          <p>Albion ne propose pas de connexion sécurisée pour les outils tiers. L'Atlas lie uniquement un personnage public, sans mot de passe, et conserve sa fiche dans votre navigateur.</p>
+        </div>
+
+        <div class="profile-hub-grid">
+          <aside class="profile-link-card">
+            <div class="profile-link-top">
+              <span class="profile-rune">K</span>
+              <div>
+                <small>Personnage public</small>
+                <strong>Lier votre aventurier</strong>
+              </div>
+            </div>
+            <form id="profile-form">
+              <label>
+                <span>Nom du personnage</span>
+                <input id="player-name" name="player-name" type="text" value="Kwardax" autocomplete="off" required />
+              </label>
+              <label>
+                <span>Serveur Albion</span>
+                <select id="player-server" name="player-server">
+                  <option value="europe" selected>Europe</option>
+                  <option value="americas">Americas</option>
+                  <option value="asia">Asia</option>
+                </select>
+              </label>
+              <button class="profile-submit" id="link-profile" type="submit">Analyser le personnage <b>→</b></button>
+            </form>
+            <p class="profile-privacy">Aucun identifiant de compte n'est demandé. Seules les statistiques publiques visibles par les services communautaires sont importées.</p>
+            <p class="profile-status" id="profile-status" role="status"></p>
+          </aside>
+
+          <article class="profile-dashboard" id="profile-dashboard" aria-live="polite">
+            <div class="profile-empty" id="profile-empty">
+              <small>En attente de liaison</small>
+              <h3>Kwardax est prêt à être analysé.</h3>
+              <p>L'Atlas va lire sa trace publique sur Albion Europe et transformer les statistiques disponibles en prochain cap concret.</p>
+            </div>
+            <div class="profile-loaded" id="profile-loaded" hidden>
+              <div class="profile-identity">
+                <span class="profile-avatar" id="profile-avatar">K</span>
+                <div>
+                  <small id="profile-server">Albion Europe</small>
+                  <h3 id="profile-name">Kwardax</h3>
+                  <p id="profile-meta"></p>
+                </div>
+                <span class="profile-live"><i></i> Lié localement</span>
+              </div>
+              <div class="profile-stat-grid">
+                <div><span>Renommée PvE</span><b id="profile-pve">0</b></div>
+                <div><span>Récolte</span><b id="profile-gathering">0</b></div>
+                <div><span>Artisanat</span><b id="profile-crafting">0</b></div>
+                <div><span>Combat public</span><b id="profile-pvp">0</b></div>
+              </div>
+              <div class="profile-route">
+                <div>
+                  <small id="profile-stage">Chapitre 01</small>
+                  <h4 id="profile-route-title">Recrue en formation</h4>
+                  <p id="profile-route-copy"></p>
+                </div>
+                <ol id="profile-route-list"></ol>
+              </div>
+              <div class="profile-dashboard-footer">
+                <span id="profile-refresh-date"></span>
+                <button class="text-link" id="unlink-profile" type="button">Délier ce personnage</button>
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
 
-      <section class="orientation section-block section-shell" id="orientation">
+      <section class="personal-brief section-shell">
+        <div>
+          <p class="eyebrow"><span></span> Votre cap personnel</p>
+          <h2 id="brief-title">Devenir un soldat autonome.</h2>
+          <p id="brief-copy">Vous n'avez pas besoin de tout apprendre en même temps. Votre priorité est de savoir sortir seul, gagner de quoi repartir et rejoindre un front quand vous voulez davantage d'action.</p>
+        </div>
+        <ul id="brief-priorities">
+          <li><b>01</b><span>Maîtriser un set simple et bon marché</span></li>
+          <li><b>02</b><span>Financer dix remplacements sans stress</span></li>
+          <li><b>03</b><span>Apprendre la faction avant le grand bain</span></li>
+        </ul>
+      </section>
+
+      <section class="section-block section-shell" id="mission">
         <div class="section-heading">
           <div>
-            <p class="eyebrow"><span></span> Orientation express</p>
-            <h2>Que voulez-vous faire ce soir&nbsp;?</h2>
+            <p class="eyebrow"><span></span> Ordre de mission</p>
+            <h2>Que faire pendant votre prochaine sortie&nbsp;?</h2>
           </div>
-          <p>Vous n'avez pas besoin de tout maîtriser pour sortir de ville. Choisissez une intention, puis ouvrez la fiche qui vous donne le prochain mouvement utile.</p>
+          <p>Choisissez le temps disponible et votre niveau de risque. Le journal vous donne une sortie concrète avec une condition de retour claire.</p>
         </div>
-        <div class="orientation-grid">
-          <button class="orientation-card open-article" data-article="daily-plan" type="button">
-            <small>30 à 60 min · Solo</small>
-            <strong>Je veux progresser sans me perdre</strong>
-            <p>Préparer une session courte, lisible et satisfaisante.</p>
-            <span>Planifier ma sortie →</span>
-          </button>
-          <button class="orientation-card open-article" data-article="silver" type="button">
-            <small>Routine · Économie</small>
-            <strong>Je veux financer mes prochains sets</strong>
-            <p>Construire une boucle sobre pour gagner vos premiers silver.</p>
-            <span>Remplir ma bourse →</span>
-          </button>
-          <button class="orientation-card open-article" data-article="survivre-lethal" type="button">
-            <small>Frisson · PvP ouvert</small>
-            <strong>Je veux oser ma première zone noire</strong>
-            <p>Transformer le risque en choix plutôt qu'en mauvaise surprise.</p>
-            <span>Préparer dix morts →</span>
-          </button>
-          <button class="orientation-card open-article" data-article="guild" type="button">
-            <small>Social · Groupe</small>
-            <strong>Je veux trouver des compagnons</strong>
-            <p>Choisir une guilde qui ouvre du contenu sans vous enfermer.</p>
-            <span>Trouver mon groupe →</span>
-          </button>
+        <div class="mission-layout">
+          <aside class="mission-planner">
+            <div>
+              <small>Temps disponible</small>
+              <div class="choice-row" id="session-time">
+                <button class="choice active" data-session-time="30" type="button">30 min</button>
+                <button class="choice" data-session-time="60" type="button">60 min</button>
+                <button class="choice" data-session-time="90" type="button">90+ min</button>
+              </div>
+            </div>
+            <div>
+              <small>Risque accepté</small>
+              <div class="choice-row" id="session-risk">
+                <button class="choice active" data-session-risk="prudent" type="button">Prudent</button>
+                <button class="choice" data-session-risk="progression" type="button">Progression</button>
+                <button class="choice" data-session-risk="lethal" type="button">Létal</button>
+              </div>
+            </div>
+            <p>Le meilleur plan n'est pas le plus rentable sur le papier. C'est celui que vous pouvez lancer maintenant et répéter demain.</p>
+          </aside>
+          <article class="mission-card">
+            <small id="mission-kicker"></small>
+            <h3 id="mission-title"></h3>
+            <p id="mission-copy"></p>
+            <ol id="mission-steps"></ol>
+            <div class="mission-footer">
+              <span id="mission-return"></span>
+              <button class="text-link open-article" id="mission-guide" data-article="daily-plan" type="button">Ouvrir la fiche utile <b>→</b></button>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="section-block section-shell" id="parcours">
+      <section class="section-block section-shell" id="campagne">
         <div class="section-heading">
           <div>
             <p class="eyebrow"><span></span> Route conseillée</p>
-            <h2>Quel aventurier êtes-vous&nbsp;?</h2>
+            <h2>Votre campagne d'aventurier-soldat</h2>
           </div>
-          <p>Choisissez votre rang actuel. Le codex vous indique quoi apprendre maintenant, et ce qu'il est encore trop tôt d'optimiser.</p>
+          <p>Quatre chapitres, dans cet ordre. Passez au suivant lorsque sa condition de départ est remplie, pas lorsque tout est parfaitement optimisé.</p>
         </div>
 
-        <div class="rank-tabs" role="tablist" aria-label="Rangs de progression">
-          <button class="rank-tab active" data-rank="debutant" type="button" role="tab">
-            <small>Rang 01</small><strong>Éclaireur</strong><span>Je débute</span>
-          </button>
-          <button class="rank-tab" data-rank="intermediaire" type="button" role="tab">
-            <small>Rang 02</small><strong>Aventurier</strong><span>Je me stabilise</span>
-          </button>
-          <button class="rank-tab" data-rank="veteran" type="button" role="tab">
-            <small>Rang 03</small><strong>Vétéran</strong><span>Je me spécialise</span>
-          </button>
-          <button class="rank-tab" data-rank="maitre" type="button" role="tab">
-            <small>Rang 04</small><strong>Maître</strong><span>Je décide</span>
-          </button>
+        <div class="campaign-grid">
+          <article class="campaign-card active" data-campaign-stage="0">
+            <small>Chapitre 01 · 1 à 3 sessions</small>
+            <h3>Recrue équipée</h3>
+            <p>Débloquez un set T4 cohérent, testez vos sorts en zone bleue puis jaune et achetez trois copies du même paquetage.</p>
+            <strong>Validation: repartir en moins de deux minutes après une défaite.</strong>
+          </article>
+          <article class="campaign-card" data-campaign-stage="1">
+            <small>Chapitre 02 · Première semaine</small>
+            <h3>Patrouilleur royal</h3>
+            <p>Faites vos premières Brumes non létales et participez à la guerre de factions en zone jaune pour apprendre les objectifs collectifs.</p>
+            <strong>Validation: savoir combattre, quitter un combat et rentrer vendre.</strong>
+          </article>
+          <article class="campaign-card" data-campaign-stage="2">
+            <small>Chapitre 03 · Quand dix sets sont prêts</small>
+            <h3>Éclaireur des frontières</h3>
+            <p>Entrez en zone rouge ou noire avec un set abordable. Votre mission n'est pas de devenir riche: elle est de revenir avec de meilleurs réflexes.</p>
+            <strong>Validation: accepter une perte sans casser votre économie.</strong>
+          </article>
+          <article class="campaign-card" data-campaign-stage="3">
+            <small>Chapitre 04 · Après vos premiers combats</small>
+            <h3>Soldat de compagnie</h3>
+            <p>Choisissez une guilde saine, découvrez les appels aux armes et préparez un second rôle pour être utile dans un petit groupe.</p>
+            <strong>Validation: comprendre votre rôle avant que le combat commence.</strong>
+          </article>
         </div>
 
-        <div class="rank-panel" id="rank-panel"></div>
+        <div class="doctrine-panel">
+          <div>
+            <p class="eyebrow"><span></span> Doctrine de départ</p>
+            <h3>Le fantassin autonome</h3>
+            <p>Ne cherchez pas encore le build ultime. Commencez avec une arme de mêlée simple que vous aimez jouer, un set abordable et une réponse claire à trois situations: tenir, poursuivre, fuir.</p>
+            <button class="text-link open-article" data-article="soldier-doctrine" type="button">Ouvrir le guide du soldat <b>→</b></button>
+          </div>
+          <ul>
+            <li><b>Tenir</b><span>Une défense ou un soin que vous gardez pour le bon moment.</span></li>
+            <li><b>Poursuivre</b><span>Une accélération ou un contrôle pour ne pas subir le rythme.</span></li>
+            <li><b>Rompre</b><span>Une sortie préparée avant même de prendre le combat.</span></li>
+          </ul>
+        </div>
       </section>
 
       <section class="section-block codex-section" id="codex">

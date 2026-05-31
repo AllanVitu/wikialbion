@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Atlas d'Albion - Codex de terrain",
+  "name": "Atlas d'Albion - Journal de campagne",
   "short_name": "Atlas Albion",
-  "description": "Un guide indépendant pour apprendre Albion Online, progresser et préparer ses aventures.",
+  "description": "Le journal personnel d'un aventurier-soldat avec liaison locale de personnage public et route de progression personnalisée.",
   "lang": "fr",
   "dir": "ltr",
   "start_url": "./",
@@ -38,6 +38,16 @@
     }
   ],
   "shortcuts": [
+    {
+      "name": "Lier mon personnage",
+      "short_name": "Mon profil",
+      "url": "./#profil"
+    },
+    {
+      "name": "Préparer ma sortie",
+      "short_name": "Ma sortie",
+      "url": "./#mission"
+    },
     {
       "name": "Ouvrir le codex",
       "short_name": "Codex",
