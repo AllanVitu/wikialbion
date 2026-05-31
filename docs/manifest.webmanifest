@@ -1,0 +1,52 @@
+{
+  "id": "./",
+  "name": "Atlas d'Albion - Codex de terrain",
+  "short_name": "Atlas Albion",
+  "description": "Un guide indépendant pour apprendre Albion Online, progresser et préparer ses aventures.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4ecdd",
+  "theme_color": "#0b2940",
+  "categories": ["education", "books", "games"],
+  "icons": [
+    {
+      "src": "assets/icons/atlas-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/atlas-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/atlas-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/atlas-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ouvrir le codex",
+      "short_name": "Codex",
+      "url": "./#codex"
+    },
+    {
+      "name": "Carnet de route",
+      "short_name": "Carnet",
+      "url": "./#checklist"
+    }
+  ]
+}

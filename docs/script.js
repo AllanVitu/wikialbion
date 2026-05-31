@@ -471,6 +471,101 @@ const articles = [
       <div class="modal-callout">Une session réussie n'a pas besoin d'être spectaculaire. Elle doit rendre la suivante plus intéressante.</div>
     `,
   },
+  {
+    id: "gear-tiers",
+    icon: "T",
+    category: "fondations",
+    rank: "Éclaireur",
+    time: "6 min",
+    title: "Lire un objet sans se tromper",
+    summary: "Palier, enchantement, qualité et puissance d'objet: comprendre ce que vous achetez vraiment.",
+    body: `
+      <h3>Le palier n'est qu'une partie de l'histoire</h3>
+      <p>Les objets d'Albion possèdent un palier, souvent noté T4 à T8, et peuvent recevoir un niveau d'enchantement affiché après un point: .1, .2, .3 ou .4. Deux armes du même nom peuvent donc avoir une puissance et un prix très différents.</p>
+      <h3>Une notation utile</h3>
+      <p>Un objet T4.1 est un objet de palier 4 avec un enchantement. Pour comparer deux options, regardez leur puissance d'objet réelle, votre spécialisation, leur prix et le risque de votre activité. Le plus haut chiffre n'est pas automatiquement le meilleur achat.</p>
+      <h3>La qualité</h3>
+      <p>La qualité apporte aussi de la puissance d'objet. Elle peut rendre un achat intéressant, mais ne laissez pas une petite amélioration statistique multiplier inutilement le prix de votre set de sortie.</p>
+      <div class="modal-callout">En zone létale, comparez toujours le gain de puissance avec le nombre de remplacements que le même budget pourrait financer.</div>
+    `,
+  },
+  {
+    id: "journal-openworld",
+    icon: "J",
+    category: "monde",
+    rank: "Éclaireur",
+    time: "6 min",
+    title: "Journal et monde ouvert",
+    summary: "Utiliser le Journal d'Albion et les objectifs dynamiques comme une invitation à explorer.",
+    body: `
+      <h3>Un guide intégré au jeu</h3>
+      <p>Introduit avec Paths to Glory en juillet 2024, le Journal d'Albion propose des missions progressivement plus exigeantes dans de nombreuses activités du sandbox. Il sert à découvrir le jeu, suivre vos accomplissements et obtenir des récompenses.</p>
+      <h3>Le monde ouvert comme routine</h3>
+      <p>Depuis Horizons, le monde ouvert propose davantage d'objectifs dynamiques: camps, repaires de boss et coffres créent des arrêts courts pendant vos déplacements. Utilisez-les pour travailler votre lecture de carte sans transformer chaque sortie en longue expédition.</p>
+      <div class="modal-callout">Le Journal est une boussole, pas une liste d'obligations. Choisissez les objectifs qui vous font découvrir une activité qui vous intrigue.</div>
+      <a class="modal-source" href="https://albiononline.com/update/paths-to-glory" target="_blank" rel="noreferrer">Page officielle Paths to Glory ↗</a><br />
+      <a class="modal-source" href="https://albiononline.com/update/horizons" target="_blank" rel="noreferrer">Page officielle Horizons ↗</a>
+    `,
+  },
+  {
+    id: "tracking",
+    icon: "⌖",
+    category: "monde",
+    rank: "Aventurier",
+    time: "6 min",
+    title: "Pistage et créatures rares",
+    summary: "Suivre des traces dans le monde ouvert et garder la tête froide pendant la chasse.",
+    body: `
+      <h3>La chasse commence par une piste</h3>
+      <p>Le Pistage a été introduit avec Wild Blood. Vous cherchez puis suivez les traces de créatures particulières à travers plusieurs régions avant l'affrontement final. Cette activité existe pour joueurs solo et groupes réduits.</p>
+      <h3>Une activité de monde ouvert</h3>
+      <p>Vous n'êtes pas isolé dans une instance: votre trajet vous expose à d'autres aventuriers et peut modifier votre plan. Gardez un équipement adapté à la chasse, mais aussi une réponse simple si la situation devient défavorable.</p>
+      <h3>Pourquoi le pratiquer</h3>
+      <p>Le Pistage casse les routes trop prévisibles, entraîne votre vigilance et permet d'obtenir des composants liés à des recettes particulières.</p>
+      <div class="modal-callout">Une bonne chasse n'est pas seulement un boss vaincu. C'est une piste suivie sans oublier que le monde continue de bouger autour de vous.</div>
+      <a class="modal-source" href="https://albiononline.com/update/wild-blood" target="_blank" rel="noreferrer">Page officielle Wild Blood ↗</a>
+    `,
+  },
+  {
+    id: "servers",
+    icon: "◎",
+    category: "fondations",
+    rank: "Éclaireur",
+    time: "4 min",
+    title: "Choisir son serveur",
+    summary: "Europe, Americas ou Asia: commencer dans le monde adapté à votre région et à vos compagnons.",
+    body: `
+      <h3>Trois mondes séparés</h3>
+      <p>Albion Online propose trois serveurs régionaux: Europe, Americas et Asia. Ils possèdent leurs propres économies et progressions. Pour un joueur basé en France, Europe est généralement le choix naturel grâce à sa latence et à ses horaires adaptés.</p>
+      <h3>Choisissez aussi vos compagnons</h3>
+      <p>Si vous rejoignez des amis déjà installés, demandez leur serveur avant de créer votre personnage principal. Une progression avancée ne se transfère pas simplement d'un monde à l'autre.</p>
+      <div class="modal-callout">Le bon serveur est celui où votre connexion est stable et où les personnes avec qui vous voulez jouer peuvent réellement vous rejoindre.</div>
+      <a class="modal-source" href="https://albiononline.com/europe" target="_blank" rel="noreferrer">Informations officielles Albion Europe ↗</a>
+    `,
+  },
+  {
+    id: "transport",
+    icon: "⇄",
+    category: "economie",
+    rank: "Aventurier",
+    time: "7 min",
+    title: "Transport et logistique",
+    summary: "Déplacer de la valeur sans confondre capacité de charge, marge théorique et risque réel.",
+    body: `
+      <h3>Le déplacement crée la marge</h3>
+      <p>Les marchés et banques étant locaux, un objet peut valoir davantage ailleurs. Cette différence n'est pas un cadeau: elle rémunère votre temps, votre préparation et parfois votre exposition au danger.</p>
+      <h3>Adaptez la monture au trajet</h3>
+      <ul>
+        <li>Pour un trajet sûr, privilégiez la capacité utile et le coût total de l'opération.</li>
+        <li>Pour un trajet létal, considérez accélération, résistance, itinéraire et valeur transportée.</li>
+        <li>Fractionnez une cargaison qui représente une part trop importante de votre capital.</li>
+        <li>Vérifiez le marché d'arrivée avant de partir: une annonce n'est pas nécessairement une vente.</li>
+      </ul>
+      <h3>Apprenez à renoncer</h3>
+      <p>Une marge devient mauvaise lorsque le trajet vous force à risquer votre économie entière. Le transport rentable est reproductible même après une perte occasionnelle.</p>
+      <div class="modal-callout">Une cargaison plus petite qui arrive vaut davantage qu'une fortune théorique posée sur une monture trop lente.</div>
+    `,
+  },
 ];
 
 const checklistItems = [
@@ -520,10 +615,12 @@ const ui = {
   sidebarProgressText: document.querySelector("#sidebar-progress-text"),
   menuToggle: document.querySelector("#menu-toggle"),
   sidebar: document.querySelector("#sidebar"),
+  installApp: document.querySelector("#install-app"),
 };
 
 let activeCategory = "all";
 let bookmarkOnly = false;
+let deferredInstallPrompt = null;
 const bookmarks = new Set(JSON.parse(localStorage.getItem("albion-bookmarks") || "[]"));
 const completedTasks = new Set(JSON.parse(localStorage.getItem("albion-checklist") || "[]"));
 
@@ -721,6 +818,25 @@ ui.menuToggle.addEventListener("click", () => {
   ui.menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
 });
 
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  ui.installApp.hidden = false;
+});
+
+ui.installApp.addEventListener("click", async () => {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  ui.installApp.hidden = true;
+});
+
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  ui.installApp.hidden = true;
+});
+
 document.querySelectorAll(".side-nav a").forEach((link) => {
   link.addEventListener("click", () => {
     ui.sidebar.classList.remove("open");
@@ -738,3 +854,7 @@ renderArticles();
 renderChecklist();
 renderGlossary();
 updateReadingProgress();
+
+if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+}

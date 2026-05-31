@@ -7,18 +7,19 @@
       name="description"
       content="Atlas d'Albion : un guide progressif en francais pour apprendre Albion Online, de vos premiers pas jusqu'a la maitrise du sandbox."
     />
+    <meta name="theme-color" content="#0b2940" />
     <title>Atlas d'Albion | Le wiki de terrain</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23d8a64b' d='M32 4 55 15v15c0 14-9 24-23 30C18 54 9 44 9 30V15z'/%3E%3Cpath fill='%23191c18' d='m32 13 12 28-12-7-12 7z'/%3E%3C/svg%3E"
-    />
+    <link rel="icon" type="image/png" href="assets/icons/atlas-192.png" />
+    <link rel="apple-touch-icon" href="assets/icons/atlas-192.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="theme.css" />
   </head>
   <body>
     <div class="page-texture" aria-hidden="true"></div>
@@ -26,12 +27,7 @@
 
     <header class="topbar">
       <a class="brand" href="#top" aria-label="Retour en haut de page">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48">
-            <path d="M24 3 42 11v12c0 11.5-6.9 18.7-18 23-11.1-4.3-18-11.5-18-23V11Z" />
-            <path d="m24 11 9 23-9-5-9 5Z" />
-          </svg>
-        </span>
+        <span class="brand-mark" aria-hidden="true"><img src="assets/icons/atlas-192.png" alt="" /></span>
         <span>
           <strong>Atlas d'Albion</strong>
           <small>Codex de terrain</small>
@@ -39,13 +35,14 @@
       </a>
 
       <nav class="topnav" aria-label="Navigation principale">
+        <a href="#orientation">S'orienter</a>
         <a href="#parcours">Parcours</a>
         <a href="#codex">Codex</a>
         <a href="#zones">Zones</a>
-        <a href="#economie">Économie</a>
       </nav>
 
       <div class="topbar-actions">
+        <button class="install-pill" id="install-app" type="button" hidden>Installer l'app</button>
         <button class="bookmark-pill" id="open-bookmarks" type="button">
           <span aria-hidden="true">◆</span>
           Carnet
@@ -68,14 +65,16 @@
         <p class="sidebar-label">Sommaire</p>
         <nav class="side-nav" aria-label="Sommaire de la page">
           <a class="active" href="#top"><i>01</i><span>Prologue</span></a>
-          <a href="#parcours"><i>02</i><span>Votre parcours</span></a>
-          <a href="#codex"><i>03</i><span>Bibliothèque</span></a>
-          <a href="#zones"><i>04</i><span>Carte des risques</span></a>
-          <a href="#economie"><i>05</i><span>Économie royale</span></a>
-          <a href="#activites"><i>06</i><span>Activités</span></a>
-          <a href="#maintenant"><i>07</i><span>Albion en 2026</span></a>
-          <a href="#checklist"><i>08</i><span>Carnet de route</span></a>
-          <a href="#glossaire"><i>09</i><span>Glossaire</span></a>
+          <a href="#orientation"><i>02</i><span>S'orienter</span></a>
+          <a href="#parcours"><i>03</i><span>Votre parcours</span></a>
+          <a href="#codex"><i>04</i><span>Bibliothèque</span></a>
+          <a href="#zones"><i>05</i><span>Carte des risques</span></a>
+          <a href="#economie"><i>06</i><span>Économie royale</span></a>
+          <a href="#activites"><i>07</i><span>Activités</span></a>
+          <a href="#maintenant"><i>08</i><span>Albion en 2026</span></a>
+          <a href="#checklist"><i>09</i><span>Carnet de route</span></a>
+          <a href="#glossaire"><i>10</i><span>Glossaire</span></a>
+          <a href="#faq"><i>11</i><span>FAQ</span></a>
         </nav>
 
         <div class="sidebar-note">
@@ -94,8 +93,8 @@
     <main id="top">
       <section class="hero section-shell">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> Wiki indépendant · Édition 2026</p>
-          <h1>Entrez dans Albion.<br /><em>Écrivez votre route.</em></h1>
+          <p class="eyebrow"><span></span> Guide indépendant · Édition 2026</p>
+          <h1>Votre boussole<br /><em>pour Albion.</em></h1>
           <p class="hero-lead">
             Un atlas pensé comme un compagnon de terrain. Comprenez les règles du sandbox,
             bâtissez votre économie et apprenez à risquer juste assez pour progresser.
@@ -106,7 +105,7 @@
           </div>
           <div class="hero-stats">
             <div><b>4</b><span>rangs de maîtrise</span></div>
-            <div><b>19</b><span>fiches pratiques</span></div>
+            <div><b>24</b><span>fiches pratiques</span></div>
             <div><b>31.020.1</b><span>version vérifiée</span></div>
           </div>
         </div>
@@ -128,8 +127,8 @@
             <span>N</span><i></i><b>A</b>
           </div>
           <div class="hero-seal">
-            <small>Leçon n° 01</small>
-            <strong>Vous êtes ce<br />que vous portez.</strong>
+            <small>Principe n° 01</small>
+            <strong>Préparez la route.<br />Puis improvisez.</strong>
           </div>
         </div>
       </section>
@@ -164,6 +163,42 @@
           <h3>Votre histoire</h3>
           <p>Combattant, récolteur, artisan, marchand ou meneur de groupe: Albion n'impose pas une campagne. Il vous donne des leviers.</p>
         </article>
+      </section>
+
+      <section class="orientation section-block section-shell" id="orientation">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Orientation express</p>
+            <h2>Que voulez-vous faire ce soir&nbsp;?</h2>
+          </div>
+          <p>Vous n'avez pas besoin de tout maîtriser pour sortir de ville. Choisissez une intention, puis ouvrez la fiche qui vous donne le prochain mouvement utile.</p>
+        </div>
+        <div class="orientation-grid">
+          <button class="orientation-card open-article" data-article="daily-plan" type="button">
+            <small>30 à 60 min · Solo</small>
+            <strong>Je veux progresser sans me perdre</strong>
+            <p>Préparer une session courte, lisible et satisfaisante.</p>
+            <span>Planifier ma sortie →</span>
+          </button>
+          <button class="orientation-card open-article" data-article="silver" type="button">
+            <small>Routine · Économie</small>
+            <strong>Je veux financer mes prochains sets</strong>
+            <p>Construire une boucle sobre pour gagner vos premiers silver.</p>
+            <span>Remplir ma bourse →</span>
+          </button>
+          <button class="orientation-card open-article" data-article="survivre-lethal" type="button">
+            <small>Frisson · PvP ouvert</small>
+            <strong>Je veux oser ma première zone noire</strong>
+            <p>Transformer le risque en choix plutôt qu'en mauvaise surprise.</p>
+            <span>Préparer dix morts →</span>
+          </button>
+          <button class="orientation-card open-article" data-article="guild" type="button">
+            <small>Social · Groupe</small>
+            <strong>Je veux trouver des compagnons</strong>
+            <p>Choisir une guilde qui ouvre du contenu sans vous enfermer.</p>
+            <span>Trouver mon groupe →</span>
+          </button>
+        </div>
       </section>
 
       <section class="section-block section-shell" id="parcours">
@@ -369,6 +404,12 @@
           <button class="activity-row open-article" data-article="guilde-zvz" type="button">
             <strong>Outlands et ZvZ</strong><span>Guilde</span><em class="risk lethal">Létal</em><p>Territoires, logistique, composition et shotcall</p>
           </button>
+          <button class="activity-row open-article" data-article="tracking" type="button">
+            <strong>Pistage / Tracking</strong><span>Solo à groupe</span><em class="risk flexible">Variable</em><p>Traque en monde ouvert, vigilance et créatures rares</p>
+          </button>
+          <button class="activity-row open-article" data-article="journal-openworld" type="button">
+            <strong>Camps dynamiques</strong><span>Solo ou groupe</span><em class="risk flexible">Variable</em><p>Objectifs courts, renommée et exploration du monde ouvert</p>
+          </button>
         </div>
       </section>
 
@@ -446,6 +487,42 @@
         </div>
       </section>
 
+      <section class="section-block section-shell faq-section" id="faq">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Questions fréquentes</p>
+            <h2>Les réponses avant le départ</h2>
+          </div>
+          <p>Les hésitations les plus courantes des nouveaux joueurs, sans détour et sans transformer chaque réponse en encyclopédie.</p>
+        </div>
+        <div class="faq-grid">
+          <details open>
+            <summary>Quel serveur choisir depuis la France&nbsp;?</summary>
+            <p>Choisissez généralement <strong>Albion Europe</strong>: ses horaires et sa latence sont adaptés à la région Europe et MENA. Les mondes Europe, Americas et Asia sont séparés; votre progression ne traverse pas les serveurs.</p>
+          </details>
+          <details>
+            <summary>Dois-je payer Premium immédiatement&nbsp;?</summary>
+            <p>Non. Commencez par vérifier que la boucle de jeu vous plaît. Premium devient utile quand vous exploitez vraiment sa progression accélérée et son focus économique.</p>
+          </details>
+          <details>
+            <summary>Quelle est la meilleure arme pour débuter&nbsp;?</summary>
+            <p>Il n'existe pas une réponse universelle. Testez plusieurs familles jusqu'au T4, puis choisissez une arme dont le plan de jeu vous paraît naturel et dont le set reste facile à remplacer.</p>
+          </details>
+          <details>
+            <summary>Quand entrer en zone noire&nbsp;?</summary>
+            <p>Dès que vous pouvez acheter plusieurs copies d'un set simple et accepter sa perte. Attendre d'être riche ou parfaitement prêt repousse seulement l'apprentissage essentiel.</p>
+          </details>
+          <details>
+            <summary>Pourquoi mes objets ne sont-ils pas dans l'autre ville&nbsp;?</summary>
+            <p>Les banques et marchés sont locaux. C'est volontaire: le transport, les écarts de prix et les risques de trajet font vivre l'économie du jeu.</p>
+          </details>
+          <details>
+            <summary>Le wiki remplace-t-il les notes officielles&nbsp;?</summary>
+            <p>Non. Ce guide enseigne les mécanismes durables. Vérifiez toujours les correctifs officiels avant d'investir lourdement dans une arme, une activité ou un marché précis.</p>
+          </details>
+        </div>
+      </section>
+
       <section class="sources section-shell">
         <div>
           <p class="eyebrow"><span></span> Sources et méthode</p>
@@ -466,12 +543,7 @@
 
     <footer>
       <a class="brand" href="#top">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48">
-            <path d="M24 3 42 11v12c0 11.5-6.9 18.7-18 23-11.1-4.3-18-11.5-18-23V11Z" />
-            <path d="m24 11 9 23-9-5-9 5Z" />
-          </svg>
-        </span>
+        <span class="brand-mark" aria-hidden="true"><img src="assets/icons/atlas-192.png" alt="" /></span>
         <span><strong>Atlas d'Albion</strong><small>Codex de terrain</small></span>
       </a>
       <p>Wiki indépendant, non affilié à Sandbox Interactive. Conçu pour apprendre, puis oser.</p>
