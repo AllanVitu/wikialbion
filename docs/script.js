@@ -1,49 +1,3 @@
-const albionServers = {
-  europe: {
-    label: "Albion Europe",
-    api: "https://gameinfo-ams.albiononline.com/api/gameinfo",
-  },
-  americas: {
-    label: "Albion Americas",
-    api: "https://gameinfo.albiononline.com/api/gameinfo",
-  },
-  asia: {
-    label: "Albion Asia",
-    api: "https://gameinfo-sgp.albiononline.com/api/gameinfo",
-  },
-};
-
-const defaultPlayer = {
-  name: "Kwardax",
-  server: "europe",
-};
-
-const profileStorageKey = "albion-linked-profile";
-const profileAutolinkKey = "albion-profile-autolink-disabled";
-const defaultProfileSnapshot = {
-  Name: "Kwardax",
-  Id: "kSnw42BqRaiYXfaYGOPxyw",
-  GuildName: null,
-  GuildId: "",
-  KillFame: 0,
-  DeathFame: 0,
-  LifetimeStatistics: {
-    PvE: { Total: 313 },
-    Gathering: {
-      Fiber: { Total: 31 },
-      Hide: { Total: 9 },
-      Ore: { Total: 126 },
-      Rock: { Total: 0 },
-      Wood: { Total: 13 },
-      All: { Total: 179 },
-    },
-    Crafting: { Total: 90 },
-    Timestamp: "2026-05-31T00:34:19.505433Z",
-  },
-  __server: "europe",
-  __snapshot: true,
-};
-
 const sessionPlans = {
   prudent: {
     30: {
@@ -512,7 +466,9 @@ const articles = [
     summary: "Un mode PvPvE d'extraction rapide pour duos et trios, introduit avec Abyssal Depths.",
     body: `
       <h3>Un format d'extraction</h3>
-      <p>Les Profondeurs ont été ajoutées le 30 juin 2025 avec Abyssal Depths. Ce contenu sous Caerleon combine adversaires, créatures, pression temporelle et décisions d'extraction pour des groupes réduits.</p>
+      <p>Les Profondeurs ont été ajoutées le 30 juin 2025 avec Abyssal Depths. Leurs entrées se trouvent dans les Antres des antiquaires des villes du continent royal. Ce contenu combine adversaires, créatures, pression temporelle et décisions d'extraction pour des groupes réduits de deux ou trois joueurs.</p>
+      <h3>La règle orange</h3>
+      <p>Une mort fait perdre le contenu de l'inventaire, mais pas l'équipement porté. Celui-ci subit des dégâts de durabilité comparables à une mise à terre en zone jaune. Plus vous descendez profondément, plus la récompense et le risque augmentent.</p>
       <h3>Ce que le mode travaille</h3>
       <p>Le format valorise l'évaluation rapide: faut-il continuer à accumuler des récompenses, prendre un combat ou sécuriser une extraction? Préparez une composition capable de se battre sans tout miser sur un unique enchaînement.</p>
       <div class="modal-callout">Dans un mode d'extraction, sortir au bon moment est une victoire. Rester jusqu'au dernier combat n'est pas toujours du courage.</div>
@@ -689,6 +645,415 @@ const articles = [
       <div class="modal-callout">Une cargaison plus petite qui arrive vaut davantage qu'une fortune théorique posée sur une monture trop lente.</div>
     `,
   },
+  {
+    id: "market-orders",
+    icon: "↕",
+    category: "economie",
+    rank: "Éclaireur",
+    time: "7 min",
+    title: "Ordres d'achat et de vente",
+    summary: "Lire le marché local, éviter les faux prix et distinguer urgence, marge et volume.",
+    body: `
+      <h3>Deux manières de commercer</h3>
+      <p>Une vente immédiate accepte le meilleur ordre d'achat disponible. Un ordre de vente attend qu'un acheteur accepte votre prix. Pour acheter, le raisonnement est symétrique: achat immédiat pour gagner du temps, ordre d'achat pour chercher une meilleure marge.</p>
+      <h3>Le piège du premier chiffre</h3>
+      <p>Regardez plusieurs lignes du carnet et le volume réellement échangé. Un objet affiché très cher mais presque jamais vendu n'est pas une source de revenu fiable. Les taxes, frais d'installation et trajets doivent rester dans le calcul.</p>
+      <ul>
+        <li>Vendez immédiatement lorsque la différence est faible et que votre temps vaut davantage.</li>
+        <li>Posez un ordre lorsque le volume existe et que la marge justifie l'attente.</li>
+        <li>Fractionnez les grosses quantités pour éviter d'immobiliser toute votre trésorerie.</li>
+      </ul>
+      <div class="modal-callout">Le meilleur prix n'est pas celui que vous voyez. C'est celui auquel une transaction réaliste peut encore se produire.</div>
+    `,
+  },
+  {
+    id: "mounts-weight",
+    icon: "M",
+    category: "survie",
+    rank: "Éclaireur",
+    time: "6 min",
+    title: "Montures, charge et désarçonnement",
+    summary: "Choisir une monture selon le trajet et éviter qu'un inventaire trop lourd décide votre défaite.",
+    body: `
+      <h3>Une monture est un outil</h3>
+      <p>Vitesse, accélération, résistance, capacité de charge et prix ne servent pas le même projet. Une monture de collecte, un transport royal et une reconnaissance en Outlands ne demandent pas le même compromis.</p>
+      <h3>Votre poids après le désarçonnement</h3>
+      <p>Une partie de votre capacité peut dépendre de la proximité ou du type de monture. En zone risquée, vérifiez ce qu'il reste lorsque vous êtes forcé de combattre à pied. Une surcharge transforme une erreur légère en immobilité.</p>
+      <ul>
+        <li>Gardez la monture proche lorsque vous combattez des créatures.</li>
+        <li>Ne transportez pas une fortune uniquement parce que la capacité existe.</li>
+        <li>Adaptez le coût de la monture à la valeur et au danger du trajet.</li>
+      </ul>
+      <div class="modal-callout">Une monture plus chère n'est pas une permission de risquer davantage. C'est parfois seulement un autre outil pour le même trajet.</div>
+    `,
+  },
+  {
+    id: "consumables",
+    icon: "+",
+    category: "combat",
+    rank: "Éclaireur",
+    time: "6 min",
+    title: "Nourriture, potions et capes",
+    summary: "Donner une fonction claire aux consommables au lieu de les ajouter machinalement au set.",
+    body: `
+      <h3>Une pièce du plan de jeu</h3>
+      <p>La nourriture fournit un effet durable, la potion répond à un moment précis et la cape ajoute un effet passif ou déclenché. Ces éléments peuvent modifier le rythme d'un combat autant qu'une pièce d'armure.</p>
+      <h3>Commencez lisible</h3>
+      <p>Pour apprendre, choisissez des consommables abordables dont vous savez expliquer l'utilité. Ajoutez ensuite les options plus coûteuses lorsqu'elles résolvent un problème observé dans votre activité.</p>
+      <ul>
+        <li>Survie: cherchez de quoi tenir un échange ou corriger une erreur.</li>
+        <li>Pression: améliorez les dégâts uniquement si vous savez déjà créer une fenêtre d'attaque.</li>
+        <li>Économie: comptez toujours les consommables dans le vrai prix du set.</li>
+      </ul>
+      <div class="modal-callout">Un consommable oublié dans la barre d'action est un coût. Un consommable utilisé avec une intention est une compétence supplémentaire.</div>
+    `,
+  },
+  {
+    id: "fame-credits",
+    icon: "✺",
+    category: "fondations",
+    rank: "Vétéran",
+    time: "7 min",
+    title: "Crédits de renommée et spécialisation",
+    summary: "Réinvestir la progression de combat une fois vos premières branches maîtrisées.",
+    body: `
+      <h3>Quand une branche est maîtrisée</h3>
+      <p>Les activités de combat continuent à nourrir votre progression après les premiers maximums. Les crédits de renommée de combat permettent de réinvestir une partie de cette expérience dans d'autres nœuds de combat du Tableau du destin.</p>
+      <h3>Auto-respécialisation</h3>
+      <p>L'auto-respécialisation accélère cette conversion au prix d'une dépense d'argent. Activez-la avec un objectif précis et surveillez son coût: elle est puissante, mais elle peut vider une banque si vous la laissez fonctionner sans y penser.</p>
+      <div class="modal-callout">Une spécialisation élevée vous donne de la puissance. Un portefeuille de rôles compris vous donne des options.</div>
+    `,
+  },
+  {
+    id: "reputation-flags",
+    icon: "⚑",
+    category: "monde",
+    rank: "Aventurier",
+    time: "7 min",
+    title: "Réputation, drapeaux et hostilité",
+    summary: "Comprendre pourquoi le même joueur n'est pas lisible de la même manière en zone jaune, rouge ou noire.",
+    body: `
+      <h3>Le continent royal a ses règles</h3>
+      <p>Sur le continent royal, l'hostilité ouverte et la réputation structurent une partie des rencontres. Une zone rouge signale le nombre de joueurs hostiles présents, ce qui donne une information utile sans raconter toute l'histoire.</p>
+      <h3>Les Outlands changent la lecture</h3>
+      <p>En zone noire, le compteur d'hostiles disparaît et la réputation ne protège plus votre trajet. La carte, les sorties, les objectifs proches et les comportements deviennent vos principaux indices.</p>
+      <div class="modal-callout">Un compteur à zéro réduit une inconnue. Il ne remplace jamais l'observation du terrain.</div>
+    `,
+  },
+  {
+    id: "hideouts-territories",
+    icon: "⌂",
+    category: "monde",
+    rank: "Vétéran",
+    time: "8 min",
+    title: "Territoires, repaires et logistique",
+    summary: "Lire les Outlands comme un espace organisé par les routes, les points d'appui et les intérêts de guilde.",
+    body: `
+      <h3>La carte politique existe</h3>
+      <p>Les Outlands ne sont pas seulement une collection de zones noires. Les territoires, châteaux, repaires de guilde et points d'appui influencent les trajets, les regroupements et la présence probable de groupes organisés.</p>
+      <h3>Ce que voit un éclaireur</h3>
+      <ul>
+        <li>Une sortie très fréquentée annonce souvent une route logistique.</li>
+        <li>Un objectif proche attire des joueurs même lorsque la zone paraissait calme.</li>
+        <li>Un trajet simple à l'aller peut devenir dangereux au retour si l'horaire change.</li>
+      </ul>
+      <div class="modal-callout">Dans les Outlands, apprendre une région vaut souvent davantage que traverser dix cartes sans comprendre qui y circule.</div>
+    `,
+  },
+  {
+    id: "resource-biomes",
+    icon: "♧",
+    category: "economie",
+    rank: "Éclaireur",
+    time: "6 min",
+    title: "Biomes et ressources",
+    summary: "Retenir la géographie économique du continent royal sans apprendre une carte par cœur.",
+    body: `
+      <h3>Cinq biomes, cinq dominantes</h3>
+      <p>Forêt pour le bois, Montagne pour le minerai, Hautes-terres pour la pierre, Steppe pour la peau et Marais pour la fibre: cette logique vous aide à choisir une ville de départ et une boucle de collecte.</p>
+      <h3>Trois ressources par biome</h3>
+      <p>Chaque biome ne contient pas uniquement sa dominante. Il propose plusieurs ressources avec des abondances différentes. Observez votre trajet réel avant d'acheter trois outils et de ralentir votre progression principale.</p>
+      <div class="modal-callout">Une spécialité n'interdit pas la curiosité. Elle vous donne simplement une boucle économique que vous savez relancer quand votre banque en a besoin.</div>
+    `,
+  },
+  {
+    id: "brecilien",
+    icon: "◎",
+    category: "monde",
+    rank: "Aventurier",
+    time: "6 min",
+    title: "Brecilien, la ville cachée",
+    summary: "Comprendre la place singulière de la cité liée aux Brumes et à l'exploration instable.",
+    body: `
+      <h3>Une ville que l'on découvre</h3>
+      <p>Brecilien est liée aux Brumes. Contrairement aux villes royales que vous rejoignez directement par la carte classique, elle s'inscrit dans une progression d'exploration et devient un point d'appui particulier pour les aventuriers qui fréquentent ces espaces.</p>
+      <h3>Une logique différente</h3>
+      <p>Sa valeur vient moins d'un trajet fixe que de son rapport aux Brumes et aux Routes d'Avalon. Avant d'y déplacer de la valeur, comprenez bien vos sorties possibles et le caractère local des banques et marchés.</p>
+      <div class="modal-callout">Une nouvelle ville n'est jamais seulement un décor. Dans Albion, elle modifie votre manière de stocker, vendre et préparer le prochain départ.</div>
+    `,
+  },
+  {
+    id: "avalon-portals",
+    icon: "◉",
+    category: "survie",
+    rank: "Aventurier",
+    time: "7 min",
+    title: "Portails avaloniens et orientation",
+    summary: "Préparer une traversée des Routes sans confondre curiosité, capacité de passage et voie de retour.",
+    body: `
+      <h3>Un réseau mouvant</h3>
+      <p>Les Routes d'Avalon relient temporairement des cartes variées à travers des portails dont la capacité est limitée. Un itinéraire valable maintenant ne devient pas une autoroute permanente.</p>
+      <h3>Avant d'entrer</h3>
+      <ul>
+        <li>Notez votre portail d'origine et l'état de sa capacité.</li>
+        <li>Gardez assez de temps pour trouver une alternative.</li>
+        <li>Évitez de disperser le groupe de part et d'autre d'un passage sans plan.</li>
+        <li>Considérez toute route comme une exploration, pas comme une promesse de retour identique.</li>
+      </ul>
+      <div class="modal-callout">Dans les Routes, l'orientation n'est pas du confort. C'est une partie de votre équipement.</div>
+    `,
+  },
+  {
+    id: "death-review",
+    icon: "×",
+    category: "combat",
+    rank: "Tous rangs",
+    time: "5 min",
+    title: "Débriefer une défaite",
+    summary: "Transformer une mort en correction concrète au lieu de changer tout le build sous le coup de l'agacement.",
+    body: `
+      <h3>Posez une seule question</h3>
+      <p>Commencez par l'erreur la plus tôt dans la chaîne: mauvais trajet, information ignorée, combat accepté sans raison, sort défensif trop vite dépensé ou poursuite trop longue. La dernière seconde n'est pas toujours la cause réelle.</p>
+      <h3>Conservez un changement observable</h3>
+      <ul>
+        <li>Je garde ma mobilité tant que la sortie adverse n'est pas connue.</li>
+        <li>Je dépose mon butin dès que mon set est remboursé.</li>
+        <li>Je refuse les combats près d'une sortie sans vision suffisante.</li>
+        <li>Je demande qui appelle la retraite avant le départ du groupe.</li>
+      </ul>
+      <div class="modal-callout">Une mort coûte un set. Une mort non analysée coûte aussi la prochaine.</div>
+    `,
+  },
+  {
+    id: "party-roles",
+    icon: "△",
+    category: "combat",
+    rank: "Aventurier",
+    time: "7 min",
+    title: "Les rôles d'un groupe",
+    summary: "Identifier dégâts, soin, contrôle, soutien et appel de cible avant que le premier combat commence.",
+    body: `
+      <h3>Un rôle est une promesse</h3>
+      <p>Un groupe solide sait qui engage, qui protège, qui soigne, qui purge, qui apporte les dégâts et qui décide de rompre. Le build n'est utile que si les autres comprennent ce qu'ils peuvent attendre de vous.</p>
+      <h3>La communication minimale</h3>
+      <ul>
+        <li>Annoncez vos temps de recharge importants plutôt que chaque détail.</li>
+        <li>Ne superposez pas toutes les défenses sur la première pression.</li>
+        <li>Suivez une cible commune lorsque le groupe cherche à finir un adversaire.</li>
+        <li>Décidez avant la sortie qui tranche lorsque le repli devient nécessaire.</li>
+      </ul>
+      <div class="modal-callout">Jouer ensemble ne signifie pas parler davantage. Cela signifie partager les quelques informations qui changent vraiment la décision.</div>
+    `,
+  },
+  {
+    id: "account-security",
+    icon: "!",
+    category: "fondations",
+    rank: "Tous rangs",
+    time: "5 min",
+    title: "Sécurité et arnaques",
+    summary: "Protéger votre compte et garder une distance saine face aux offres trop belles pour être vraies.",
+    body: `
+      <h3>Ne donnez jamais vos identifiants</h3>
+      <p>Un outil communautaire sérieux n'a pas besoin de votre mot de passe Albion. Utilisez les canaux officiels pour votre compte et méfiez-vous des liens reçus en message privé, cadeaux miraculeux et demandes urgentes.</p>
+      <h3>Dans le jeu aussi</h3>
+      <ul>
+        <li>Relisez chaque échange avant de confirmer.</li>
+        <li>Vérifiez quantité, qualité, enchantement et prix total.</li>
+        <li>Ne transportez pas la banque d'une autre personne sur une simple promesse.</li>
+        <li>Demandez les règles d'une guilde avant de contribuer à un fonds commun.</li>
+      </ul>
+      <div class="modal-callout">La précipitation est souvent le vrai produit vendu par une arnaque.</div>
+    `,
+  },
+  {
+    id: "overcharge",
+    icon: "⚡",
+    category: "combat",
+    rank: "Vétéran",
+    time: "6 min",
+    title: "Surcharger son équipement",
+    summary: "Utiliser la surcharge comme décision tactique, pas comme bouton réflexe à chaque rencontre.",
+    body: `
+      <h3>Gagner de la puissance temporaire</h3>
+      <p>La surcharge consomme de l'énergie siphonnée pour augmenter temporairement la puissance de votre équipement. Elle peut modifier un combat important, mais elle expose aussi les pièces concernées à un risque de casse lorsque l'effet se termine.</p>
+      <h3>Une décision économique</h3>
+      <p>Demandez-vous si l'objectif, l'équipement adverse et votre possibilité réelle de gagner justifient ce coût potentiel. Surcharger pour éviter une perte déjà probable peut être rationnel; le faire automatiquement détruit votre marge.</p>
+      <div class="modal-callout">Une ressource tactique devient chère lorsqu'elle remplace la réflexion au lieu de soutenir une vraie fenêtre d'action.</div>
+    `,
+  },
+  {
+    id: "albion-journal",
+    icon: "J",
+    category: "fondations",
+    rank: "Tous rangs",
+    time: "6 min",
+    title: "Utiliser le Journal sans subir une checklist",
+    summary: "Profiter du guide intégré au jeu comme invitation à essayer, puis choisir vos propres projets.",
+    body: `
+      <h3>Une carte de visite du sandbox</h3>
+      <p>Le Journal d'Albion rassemble des objectifs dans de nombreuses activités. Il montre ce qui existe, fournit des récompenses et donne une première structure lorsque le monde paraît trop ouvert.</p>
+      <h3>Gardez votre liberté</h3>
+      <p>Ne terminez pas une activité que vous détestez uniquement pour cocher une case. Utilisez le Journal pour repérer une possibilité, essayez-la avec curiosité, puis décidez si elle mérite une place dans votre semaine.</p>
+      <div class="modal-callout">Le sandbox commence vraiment lorsque la liste du jeu devient une source d'idées et cesse d'être votre maître d'agenda.</div>
+    `,
+  },
+  {
+    id: "radiant-wilds",
+    icon: "✦",
+    category: "monde",
+    rank: "Tous rangs",
+    time: "7 min",
+    title: "Radiant Wilds : ce qu'il faut retenir",
+    summary: "Les changements visibles et pratiques de la mise à jour majeure du 13 avril 2026.",
+    body: `
+      <h3>Une refonte visible</h3>
+      <p>Radiant Wilds a retravaillé l'apparence des biomes, amélioré les performances et apporté plusieurs évolutions d'interface. Pour un joueur qui revient après une pause, le monde paraît familier mais sensiblement plus lisible et détaillé.</p>
+      <h3>Des outils pour mieux décider</h3>
+      <p>L'Armurerie s'appuie sur des données d'utilisation réelles pour recommander des équipements. Le Tableau du destin masque par défaut les nœuds encore inaccessibles afin de clarifier la progression. Une Arène classée 1v1 ajoute aussi un terrain d'entraînement structuré.</p>
+      <div class="modal-callout">Une recommandation de build est un point de départ. Le bon équipement reste celui dont vous comprenez le rôle, le prix et le terrain d'emploi.</div>
+      <a class="modal-source" href="https://steamdb.info/patchnotes/22761388/" target="_blank" rel="noreferrer">Notes Radiant Wilds · 13 avril 2026 ↗</a>
+    `,
+  },
+];
+
+const anecdotes = [
+  {
+    category: "economie",
+    tag: "Économie vivante",
+    title: "Le butin passe aussi par le Marché noir",
+    copy: "À Caerleon, le Marché noir achète des objets fabriqués par les joueurs afin d'alimenter une partie des récompenses du monde. Le loot et l'artisanat ne vivent donc pas dans deux économies séparées.",
+    article: "caerleon",
+  },
+  {
+    category: "economie",
+    tag: "Marchés locaux",
+    title: "Changer de ville crée déjà une profession",
+    copy: "Les banques et marchés ne sont pas partagés. Un simple trajet peut devenir une activité économique, car la marge rémunère le temps, l'information et parfois le danger.",
+    article: "transport",
+  },
+  {
+    category: "combat",
+    tag: "Identité du personnage",
+    title: "Albion n'a pas de classe verrouillée",
+    copy: "Votre arme fournit le cœur du plan de jeu et vos pièces d'armure ajoutent leurs propres sorts. Changer de rôle consiste d'abord à changer ce que vous portez.",
+    article: "build",
+  },
+  {
+    category: "monde",
+    tag: "Lecture du danger",
+    title: "Le compteur d'hostiles disparaît en zone noire",
+    copy: "La zone rouge donne encore un nombre de joueurs hostiles. Dans les Outlands, cette information disparaît : l'observation de la carte et des comportements prend le relais.",
+    article: "reputation-flags",
+  },
+  {
+    category: "monde",
+    tag: "Brumes",
+    title: "Solo et duo ne traversent pas les mêmes Brumes",
+    copy: "Les Brumes ordinaires structurent les aventures solo. Les Brumes supérieures ouvrent une version pensée pour les duos, avec une dynamique de rencontre différente.",
+    article: "mists-roads",
+  },
+  {
+    category: "monde",
+    tag: "Routes d'Avalon",
+    title: "Un portail n'est pas un passage infini",
+    copy: "Les portails avaloniens possèdent une capacité limitée. L'orientation et le regroupement comptent, car une partie du groupe peut se retrouver séparée au mauvais moment.",
+    article: "avalon-portals",
+  },
+  {
+    category: "histoire",
+    tag: "16 octobre 2023",
+    title: "Wild Blood a transformé la chasse",
+    copy: "L'arrivée du Pistage a ajouté une activité de monde ouvert centrée sur la recherche de créatures et des composants particuliers, aux côtés des armes métamorphes.",
+    article: "tracking",
+  },
+  {
+    category: "histoire",
+    tag: "22 juillet 2024",
+    title: "Le Journal est un ajout relativement récent",
+    copy: "Paths to Glory a introduit le Journal d'Albion comme système d'objectifs et de récompenses. Il sert autant à guider les nouveaux venus qu'à suggérer des détours aux vétérans.",
+    article: "journal-openworld",
+  },
+  {
+    category: "histoire",
+    tag: "3 février 2025",
+    title: "Les Outlands ont gagné un réseau clandestin",
+    copy: "Rogue Frontier a ajouté les Tanières et le Réseau des contrebandiers, donnant aux joueurs autonomes davantage de points d'appui dans les zones noires.",
+    article: "smugglers",
+  },
+  {
+    category: "combat",
+    tag: "30 juin 2025",
+    title: "Les Profondeurs ont inventé une règle orange",
+    copy: "Dans les Profondeurs, une mort fait perdre l'inventaire mais conserve l'équipement porté, qui subit des dégâts de durabilité. Cette règle se place entre jaune et rouge.",
+    article: "depths",
+  },
+  {
+    category: "histoire",
+    tag: "13 avril 2026",
+    title: "Radiant Wilds ne change pas que le décor",
+    copy: "La refonte visuelle des biomes est accompagnée d'améliorations de performance, d'une Armurerie nourrie par les usages réels et d'une Arène classée 1v1.",
+    article: "radiant-wilds",
+  },
+  {
+    category: "combat",
+    tag: "Équipement",
+    title: "La qualité n'est qu'une partie du prix",
+    copy: "Palier, enchantement, qualité, spécialisation et contexte déterminent ensemble l'intérêt d'un objet. Un chiffre supérieur n'est pas automatiquement une meilleure décision.",
+    article: "gear-tiers",
+  },
+  {
+    category: "economie",
+    tag: "Raffinage",
+    title: "Chaque ville royale a sa matière favorite",
+    copy: "Fort Sterling pour le bois, Lymhurst pour la fibre, Bridgewatch pour la pierre, Martlock pour la peau et Thetford pour le minerai : la géographie influence directement les routes marchandes.",
+    article: "craft-focus",
+  },
+  {
+    category: "combat",
+    tag: "Progression",
+    title: "Une branche maîtrisée continue à servir",
+    copy: "Les crédits de renommée de combat permettent de réinvestir une partie de votre progression dans d'autres nœuds. Votre premier rôle solide peut donc aider à construire le suivant.",
+    article: "fame-credits",
+  },
+  {
+    category: "monde",
+    tag: "Caerleon",
+    title: "La ville centrale ne ressemble pas aux cinq autres",
+    copy: "Caerleon se trouve au cœur des zones rouges et héberge le Marché noir. Sa position en fait une destination commerciale autant qu'une décision de transport.",
+    article: "caerleon",
+  },
+  {
+    category: "combat",
+    tag: "Surcharge",
+    title: "Plus de puissance peut casser de l'équipement",
+    copy: "La surcharge consomme de l'énergie siphonnée et augmente temporairement la puissance d'objet, avec un risque de casse à la fin. Même un bonus tactique garde un coût économique.",
+    article: "overcharge",
+  },
+  {
+    category: "monde",
+    tag: "Brecilien",
+    title: "Toutes les villes ne s'atteignent pas par une route classique",
+    copy: "Brecilien est liée aux Brumes et se découvre dans cette logique d'exploration instable. Elle rappelle que la géographie d'Albion est aussi un système de jeu.",
+    article: "brecilien",
+  },
+  {
+    category: "economie",
+    tag: "Psychologie",
+    title: "Rentrer est une compétence économique",
+    copy: "Déposer régulièrement le butin transforme une bonne occasion en progression réelle. Le dernier coffre et les cinq minutes de trop coûtent souvent davantage que prévu.",
+    article: "survivre-lethal",
+  },
 ];
 
 const checklistItems = [
@@ -702,6 +1067,12 @@ const checklistItems = [
   ["warbank", "Financer dix sets", "Construire votre banque de guerre avant le luxe."],
   ["lethal", "Faire une sortie létale", "Entrer léger, fixer votre retour et accepter la perte."],
   ["guild", "Parler à une guilde", "Poser des questions sur ses activités et ses attentes."],
+  ["orders", "Tester un ordre de marché", "Comparer vente immédiate, ordre de vente, frais et volume."],
+  ["mount", "Vérifier votre charge à pied", "Connaître votre mobilité réelle après un désarçonnement."],
+  ["food", "Équiper des consommables utiles", "Choisir une nourriture et une potion dont vous savez expliquer le rôle."],
+  ["return", "Fixer une règle de retour", "Décider avant la sortie quand déposer le butin ou arrêter la session."],
+  ["review", "Débriefer une défaite", "Noter une décision précise à modifier lors de la prochaine sortie."],
+  ["bookmark", "Créer votre carnet Atlas", "Marquer quelques fiches utiles à votre activité préférée."],
 ];
 
 const glossary = [
@@ -717,6 +1088,22 @@ const glossary = [
   ["Focus", "Ressource liée à Premium utilisée pour améliorer certains rendements économiques."],
   ["Reroll", "Changer ou relancer la qualité d'un objet, ou parfois changer de rôle selon le contexte."],
   ["CTA", "Call to Arms. Rassemblement demandé par une guilde ou alliance pour une opération."],
+  ["AOE", "Area of Effect. Sort ou effet qui touche une zone et potentiellement plusieurs cibles."],
+  ["CC", "Crowd Control. Contrôle qui gêne le mouvement ou l'action: ralentissement, silence, étourdissement, etc."],
+  ["DPS", "Damage Per Second. Désigne les dégâts infligés ou, par extension, un rôle offensif."],
+  ["Sustain", "Capacité à tenir dans la durée grâce aux soins, boucliers, résistances ou ressources."],
+  ["Burst", "Fenêtre courte pendant laquelle un build cherche à infliger beaucoup de dégâts."],
+  ["Peel", "Action de protéger un allié en contrôlant ou repoussant l'adversaire qui le menace."],
+  ["Purge", "Effet qui retire certains bonus actifs d'une cible adverse."],
+  ["Dispel", "Effet qui retire certains contrôles ou altérations appliqués à un allié."],
+  ["Clap", "Dégâts de zone synchronisés pour frapper fortement un groupe compact."],
+  ["Shotcaller", "Joueur qui donne les décisions principales d'un groupe pendant une opération."],
+  ["HO", "Hideout, ou repaire. Point d'appui construit par une guilde dans les Outlands."],
+  ["RMT", "Real Money Trading. Échange interdit de monnaie ou services en jeu contre de l'argent réel."],
+  ["Trash rate", "Part des objets détruits lors d'une mort au lieu d'être récupérables comme butin."],
+  ["Softcap", "Réduction progressive de la puissance au-delà d'un seuil fixé par un contenu."],
+  ["OC", "Overcharge, ou surcharge. Bonus temporaire de puissance obtenu contre de l'énergie siphonnée."],
+  ["Rat", "Terme communautaire pour un style opportuniste qui évite souvent le combat direct afin de récupérer une récompense."],
 ];
 
 const ui = {
@@ -746,261 +1133,20 @@ const ui = {
   missionSteps: document.querySelector("#mission-steps"),
   missionReturn: document.querySelector("#mission-return"),
   missionGuide: document.querySelector("#mission-guide"),
-  profileShortcut: document.querySelector("#profile-shortcut"),
-  profileShortcutLabel: document.querySelector("#profile-shortcut-label"),
-  profileForm: document.querySelector("#profile-form"),
-  playerName: document.querySelector("#player-name"),
-  playerServer: document.querySelector("#player-server"),
-  linkProfile: document.querySelector("#link-profile"),
-  profileStatus: document.querySelector("#profile-status"),
-  profileEmpty: document.querySelector("#profile-empty"),
-  profileLoaded: document.querySelector("#profile-loaded"),
-  profileAvatar: document.querySelector("#profile-avatar"),
-  profileServer: document.querySelector("#profile-server"),
-  profileName: document.querySelector("#profile-name"),
-  profileMeta: document.querySelector("#profile-meta"),
-  profilePve: document.querySelector("#profile-pve"),
-  profileGathering: document.querySelector("#profile-gathering"),
-  profileCrafting: document.querySelector("#profile-crafting"),
-  profilePvp: document.querySelector("#profile-pvp"),
-  profileStage: document.querySelector("#profile-stage"),
-  profileRouteTitle: document.querySelector("#profile-route-title"),
-  profileRouteCopy: document.querySelector("#profile-route-copy"),
-  profileRouteList: document.querySelector("#profile-route-list"),
-  profileRefreshDate: document.querySelector("#profile-refresh-date"),
-  unlinkProfile: document.querySelector("#unlink-profile"),
-  heroStageValue: document.querySelector("#hero-stage-value"),
-  heroStageLabel: document.querySelector("#hero-stage-label"),
-  heroFocusValue: document.querySelector("#hero-focus-value"),
-  heroFocusLabel: document.querySelector("#hero-focus-label"),
-  heroTargetValue: document.querySelector("#hero-target-value"),
-  heroTargetLabel: document.querySelector("#hero-target-label"),
-  briefTitle: document.querySelector("#brief-title"),
-  briefCopy: document.querySelector("#brief-copy"),
-  briefPriorities: document.querySelector("#brief-priorities"),
+  anecdoteGrid: document.querySelector("#anecdote-grid"),
+  anecdoteFilters: document.querySelector("#anecdote-filters"),
+  articleCount: document.querySelector("#article-count"),
+  anecdoteCount: document.querySelector("#anecdote-count"),
 };
 
 let activeCategory = "all";
+let activeAnecdoteCategory = "all";
 let bookmarkOnly = false;
 let deferredInstallPrompt = null;
 let sessionTime = localStorage.getItem("albion-session-time") || "30";
 let sessionRisk = localStorage.getItem("albion-session-risk") || "prudent";
-let linkedProfile =
-  JSON.parse(localStorage.getItem(profileStorageKey) || "null") ||
-  (localStorage.getItem(profileAutolinkKey) ? null : defaultProfileSnapshot);
 const bookmarks = new Set(JSON.parse(localStorage.getItem("albion-bookmarks") || "[]"));
 const completedTasks = new Set(JSON.parse(localStorage.getItem("albion-checklist") || "[]"));
-
-function formatFame(value) {
-  return new Intl.NumberFormat("fr-FR").format(Math.max(0, Number(value) || 0));
-}
-
-function getProfileStats(profile) {
-  const lifetime = profile.LifetimeStatistics || {};
-  const gathering = lifetime.Gathering || {};
-  const resources = [
-    ["Fiber", "fibre"],
-    ["Hide", "peau"],
-    ["Ore", "minerai"],
-    ["Rock", "pierre"],
-    ["Wood", "bois"],
-  ].map(([key, label]) => ({
-    label,
-    value: Number(gathering[key]?.Total) || 0,
-  }));
-  const dominantResource = [...resources].sort((a, b) => b.value - a.value)[0];
-  return {
-    pve: Number(lifetime.PvE?.Total) || 0,
-    gathering: Number(gathering.All?.Total) || 0,
-    crafting: Number(lifetime.Crafting?.Total) || 0,
-    pvp: (Number(profile.KillFame) || 0) + (Number(profile.DeathFame) || 0),
-    dominantResource: dominantResource?.value ? dominantResource : null,
-  };
-}
-
-function getProfileRoute(profile) {
-  const stats = getProfileStats(profile);
-  const resource = stats.dominantResource?.label || "ressource principale";
-  if (stats.pve < 10000) {
-    return {
-      stage: 0,
-      stageLabel: "Chapitre 01 · Recrue",
-      title: "Finir vos fondations",
-      copy: `${profile.Name} commence son aventure. La priorité n'est pas la performance: c'est de débloquer un paquetage T4 simple et de comprendre chaque sort.`,
-      priorities: [
-        "Terminer le tutoriel et ouvrir le Journal d'Albion",
-        "Débloquer une arme de mêlée et un paquetage complet T4",
-        stats.dominantResource
-          ? `Garder le ${resource} comme première boucle économique`
-          : "Tester une première ressource pour financer les remplacements",
-      ],
-      hero: ["01", "chapitre conseillé", "T4", "prochain cap", resource, "ressource repérée"],
-    };
-  }
-  if (stats.pve < 100000) {
-    return {
-      stage: 1,
-      stageLabel: "Chapitre 02 · Patrouilleur",
-      title: "Stabiliser votre routine",
-      copy: `${profile.Name} possède les bases. Il est temps de répéter un set, pratiquer la faction non létale et transformer la récolte de ${resource} en réserve de départs.`,
-      priorities: [
-        "Préparer trois copies identiques du paquetage principal",
-        "Jouer faction et Brumes non létales pour apprendre le repli",
-        `Financer la banque de guerre avec votre boucle ${resource}`,
-      ],
-      hero: ["02", "chapitre conseillé", "3", "sets prêts en banque", resource, "boucle économique"],
-    };
-  }
-  if (stats.pvp < 50000 || !profile.GuildName) {
-    return {
-      stage: 2,
-      stageLabel: "Chapitre 03 · Frontières",
-      title: "Oser les frontières létales",
-      copy: `${profile.Name} a suffisamment vécu dans le monde ouvert pour travailler le risque choisi. Les prochaines sorties doivent rester courtes, abordables et faciles à répéter.`,
-      priorities: [
-        "Constituer dix remplacements avant de chercher le luxe",
-        "Faire des sorties létales courtes avec une condition de retour",
-        profile.GuildName ? "Ajouter un second rôle utile au groupe" : "Chercher une guilde saine pour ouvrir le contenu collectif",
-      ],
-      hero: ["03", "chapitre conseillé", "10", "sets avant le luxe", "BZ", "terrain à découvrir"],
-    };
-  }
-  return {
-    stage: 3,
-    stageLabel: "Chapitre 04 · Compagnie",
-    title: "Devenir utile à votre compagnie",
-    copy: `${profile.Name} a déjà une vraie trace de combat. Le meilleur gain vient désormais de la spécialisation, de la logistique et d'un second rôle compris par votre groupe.`,
-    priorities: [
-      "Préparer deux rôles adaptés aux sorties de guilde",
-      "Garder plusieurs remplacements prêts avant chaque opération",
-      "Débriefer une décision précise après chaque défaite",
-    ],
-    hero: ["04", "chapitre conseillé", "2", "rôles complémentaires", "CTA", "prochain terrain"],
-  };
-}
-
-function setProfileStatus(message, isError = false) {
-  ui.profileStatus.textContent = message;
-  ui.profileStatus.classList.toggle("error", isError);
-}
-
-function renderDefaultPath() {
-  ui.profileShortcut.classList.remove("connected");
-  ui.profileShortcutLabel.textContent = `Lier ${defaultPlayer.name}`;
-  ui.profileEmpty.hidden = false;
-  ui.profileLoaded.hidden = true;
-  ui.heroStageValue.textContent = "4";
-  ui.heroStageLabel.textContent = "chapitres de campagne";
-  ui.heroFocusValue.textContent = "1";
-  ui.heroFocusLabel.textContent = "doctrine de départ";
-  ui.heroTargetValue.textContent = "10";
-  ui.heroTargetLabel.textContent = "sets avant le luxe";
-  ui.briefTitle.textContent = "Devenir un soldat autonome.";
-  ui.briefCopy.textContent =
-    "Vous n'avez pas besoin de tout apprendre en même temps. Votre priorité est de savoir sortir seul, gagner de quoi repartir et rejoindre un front quand vous voulez davantage d'action.";
-  ui.briefPriorities.innerHTML = `
-    <li><b>01</b><span>Maîtriser un set simple et bon marché</span></li>
-    <li><b>02</b><span>Financer dix remplacements sans stress</span></li>
-    <li><b>03</b><span>Apprendre la faction avant le grand bain</span></li>
-  `;
-  document.querySelectorAll("[data-campaign-stage]").forEach((card) => {
-    card.classList.toggle("active", card.dataset.campaignStage === "0");
-  });
-}
-
-function renderLinkedProfile(profile) {
-  const stats = getProfileStats(profile);
-  const route = getProfileRoute(profile);
-  const server = albionServers[profile.__server] || albionServers.europe;
-  const publicDate = profile.LifetimeStatistics?.Timestamp
-    ? new Date(profile.LifetimeStatistics.Timestamp).toLocaleDateString("fr-FR")
-    : "date non communiquée";
-  ui.profileShortcut.classList.add("connected");
-  ui.profileShortcutLabel.textContent = profile.Name;
-  ui.profileEmpty.hidden = true;
-  ui.profileLoaded.hidden = false;
-  ui.profileAvatar.textContent = profile.Name.slice(0, 1).toLocaleUpperCase("fr");
-  ui.profileServer.textContent = server.label;
-  ui.profileName.textContent = profile.Name;
-  ui.profileMeta.textContent = profile.GuildName ? `Guilde: ${profile.GuildName}` : "Sans guilde · trace publique";
-  ui.profilePve.textContent = formatFame(stats.pve);
-  ui.profileGathering.textContent = formatFame(stats.gathering);
-  ui.profileCrafting.textContent = formatFame(stats.crafting);
-  ui.profilePvp.textContent = formatFame(stats.pvp);
-  ui.profileStage.textContent = route.stageLabel;
-  ui.profileRouteTitle.textContent = route.title;
-  ui.profileRouteCopy.textContent = route.copy;
-  ui.profileRouteList.innerHTML = route.priorities.map((priority) => `<li>${priority}</li>`).join("");
-  ui.profileRefreshDate.textContent = `Statistiques publiques mises à jour le ${publicDate}`;
-  ui.heroStageValue.textContent = route.hero[0];
-  ui.heroStageLabel.textContent = route.hero[1];
-  ui.heroFocusValue.textContent = route.hero[2];
-  ui.heroFocusLabel.textContent = route.hero[3];
-  ui.heroTargetValue.textContent = route.hero[4];
-  ui.heroTargetLabel.textContent = route.hero[5];
-  ui.briefTitle.textContent = `${profile.Name}, votre prochain cap.`;
-  ui.briefCopy.textContent = route.copy;
-  ui.briefPriorities.innerHTML = route.priorities
-    .map((priority, index) => `<li><b>0${index + 1}</b><span>${priority}</span></li>`)
-    .join("");
-  document.querySelectorAll("[data-campaign-stage]").forEach((card) => {
-    card.classList.toggle("active", Number(card.dataset.campaignStage) === route.stage);
-  });
-}
-
-async function requestJson(url, timeout = 7000) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeout);
-  try {
-    const response = await fetch(url, {
-      headers: { Accept: "application/json" },
-      signal: controller.signal,
-    });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return await response.json();
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-async function requestAlbionJson(serverKey, path) {
-  const server = albionServers[serverKey];
-  if (!server) throw new Error("Serveur Albion inconnu.");
-  const url = `${server.api}${path}`;
-  try {
-    return await requestJson(url);
-  } catch {
-    const relay = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-    return await requestJson(relay, 16000);
-  }
-}
-
-async function linkPublicProfile(name, serverKey) {
-  const cleanName = name.trim();
-  if (!cleanName) return;
-  ui.linkProfile.disabled = true;
-  setProfileStatus(`Recherche de ${cleanName} sur ${albionServers[serverKey].label}...`);
-  try {
-    const search = await requestAlbionJson(serverKey, `/search?q=${encodeURIComponent(cleanName)}`);
-    const player = search.players?.find(({ Name }) => Name.toLocaleLowerCase("fr") === cleanName.toLocaleLowerCase("fr"));
-    if (!player) throw new Error(`Personnage introuvable sur ${albionServers[serverKey].label}.`);
-    const profile = await requestAlbionJson(serverKey, `/players/${encodeURIComponent(player.Id)}`);
-    linkedProfile = { ...profile, __server: serverKey, __linkedAt: new Date().toISOString() };
-    localStorage.setItem(profileStorageKey, JSON.stringify(linkedProfile));
-    localStorage.removeItem(profileAutolinkKey);
-    renderLinkedProfile(linkedProfile);
-    setProfileStatus(`${profile.Name} est lié localement. Votre route a été recalculée.`);
-  } catch (error) {
-    setProfileStatus(
-      linkedProfile
-        ? "Actualisation indisponible. La dernière fiche publique conservée localement reste affichée."
-        : error.message || "Impossible de lire la fiche publique pour le moment.",
-      true,
-    );
-  } finally {
-    ui.linkProfile.disabled = false;
-  }
-}
 
 function renderMission() {
   const mission = sessionPlans[sessionRisk][sessionTime];
@@ -1022,7 +1168,7 @@ function getFilteredArticles() {
   const query = ui.search.value.trim().toLocaleLowerCase("fr");
   return articles.filter((article) => {
     const categoryMatches = activeCategory === "all" || article.category === activeCategory;
-    const queryMatches = `${article.title} ${article.summary} ${article.rank} ${article.category}`
+    const queryMatches = `${article.title} ${article.summary} ${article.rank} ${article.category} ${article.body}`
       .toLocaleLowerCase("fr")
       .includes(query);
     const bookmarkMatches = !bookmarkOnly || bookmarks.has(article.id);
@@ -1050,6 +1196,26 @@ function renderArticles() {
     .join("");
   ui.empty.hidden = filteredArticles.length !== 0;
   ui.bookmarkCount.textContent = bookmarks.size;
+  ui.articleCount.textContent = articles.length;
+}
+
+function renderAnecdotes() {
+  const filteredAnecdotes = anecdotes.filter(
+    ({ category }) => activeAnecdoteCategory === "all" || activeAnecdoteCategory === category,
+  );
+  ui.anecdoteGrid.innerHTML = filteredAnecdotes
+    .map(
+      (anecdote, index) => `
+        <article class="anecdote-card">
+          <div><small>${anecdote.tag}</small><b>${String(index + 1).padStart(2, "0")}</b></div>
+          <h3>${anecdote.title}</h3>
+          <p>${anecdote.copy}</p>
+          <button class="text-link open-article" data-article="${anecdote.article}" type="button">Approfondir <b>→</b></button>
+        </article>
+      `,
+    )
+    .join("");
+  ui.anecdoteCount.textContent = anecdotes.length;
 }
 
 function openArticle(articleId) {
@@ -1143,19 +1309,6 @@ document.querySelectorAll("[data-session-risk]").forEach((button) => {
   });
 });
 
-ui.profileForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  linkPublicProfile(ui.playerName.value, ui.playerServer.value);
-});
-
-ui.unlinkProfile.addEventListener("click", () => {
-  linkedProfile = null;
-  localStorage.removeItem(profileStorageKey);
-  localStorage.setItem(profileAutolinkKey, "true");
-  renderDefaultPath();
-  setProfileStatus("Personnage délié. Vous pouvez relancer une analyse quand vous voulez.");
-});
-
 ui.search.addEventListener("input", renderArticles);
 
 ui.filters.addEventListener("click", (event) => {
@@ -1166,6 +1319,15 @@ ui.filters.addEventListener("click", (event) => {
   document.querySelector(".filter.active").classList.remove("active");
   filter.classList.add("active");
   renderArticles();
+});
+
+ui.anecdoteFilters.addEventListener("click", (event) => {
+  const filter = event.target.closest("[data-anecdote-category]");
+  if (!filter) return;
+  activeAnecdoteCategory = filter.dataset.anecdoteCategory;
+  ui.anecdoteFilters.querySelector(".active").classList.remove("active");
+  filter.classList.add("active");
+  renderAnecdotes();
 });
 
 document.addEventListener("click", (event) => {
@@ -1247,25 +1409,14 @@ window.addEventListener("scroll", () => {
 
 renderMission();
 renderArticles();
+renderAnecdotes();
 renderChecklist();
 renderGlossary();
 updateReadingProgress();
-renderDefaultPath();
-
-if (linkedProfile) {
-  ui.playerName.value = linkedProfile.Name;
-  ui.playerServer.value = linkedProfile.__server || defaultPlayer.server;
-  renderLinkedProfile(linkedProfile);
-  if (location.protocol === "file:") {
-    setProfileStatus(`${linkedProfile.Name} est chargé depuis la dernière fiche publique locale. Utilisez Analyser pour actualiser.`);
-  } else {
-    setProfileStatus(`${linkedProfile.Name} a été restauré depuis ce navigateur. Actualisation en cours...`);
-    linkPublicProfile(linkedProfile.Name, linkedProfile.__server || defaultPlayer.server);
-  }
-} else if (location.protocol !== "file:") {
-  linkPublicProfile(defaultPlayer.name, defaultPlayer.server);
-}
 
 if ("serviceWorker" in navigator && location.protocol !== "file:") {
   window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
 }
+
+const requestedArticle = new URLSearchParams(window.location.search).get("article");
+if (requestedArticle) openArticle(requestedArticle);

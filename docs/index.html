@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Atlas d'Albion : un guide progressif en francais pour apprendre Albion Online, de vos premiers pas jusqu'a la maitrise du sandbox."
+      content="Atlas d'Albion : un codex de terrain complet pour comprendre Albion Online, préparer vos sorties et explorer les mécaniques du sandbox."
     />
-    <meta name="theme-color" content="#0b2940" />
-    <title>Atlas d'Albion | Journal d'un aventurier-soldat</title>
+    <meta name="theme-color" content="#090d13" />
+    <title>Atlas d'Albion | Codex de terrain</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,17 +35,17 @@
       </a>
 
       <nav class="topnav" aria-label="Navigation principale">
-        <a href="#profil">Mon profil</a>
         <a href="#mission">Ma sortie</a>
         <a href="#campagne">Ma campagne</a>
         <a href="#codex">Codex</a>
+        <a href="#anecdotes">Anecdotes</a>
       </nav>
 
       <div class="topbar-actions">
         <button class="install-pill" id="install-app" type="button" hidden>Installer l'app</button>
-        <a class="profile-pill" id="profile-shortcut" href="#profil">
+        <a class="dashlbion-pill" href="../Dashlbion/" aria-label="Ouvrir Dashlbion pour analyser un personnage">
           <span aria-hidden="true"></span>
-          <b id="profile-shortcut-label">Lier Kwardax</b>
+          <b>Dashlbion</b>
         </a>
         <button class="bookmark-pill" id="open-bookmarks" type="button">
           <span aria-hidden="true">◆</span>
@@ -69,13 +69,14 @@
         <p class="sidebar-label">Sommaire</p>
         <nav class="side-nav" aria-label="Sommaire de la page">
           <a class="active" href="#top"><i>01</i><span>Prologue</span></a>
-          <a href="#profil"><i>02</i><span>Mon personnage</span></a>
+          <a href="#reperes"><i>02</i><span>Repères</span></a>
           <a href="#mission"><i>03</i><span>Prochaine sortie</span></a>
-          <a href="#campagne"><i>04</i><span>Ma campagne</span></a>
+          <a href="#campagne"><i>04</i><span>Progression</span></a>
           <a href="#codex"><i>05</i><span>Bibliothèque</span></a>
           <a href="#zones"><i>06</i><span>Risques</span></a>
           <a href="#activites"><i>07</i><span>Activités</span></a>
-          <a href="#checklist"><i>08</i><span>Carnet de route</span></a>
+          <a href="#anecdotes"><i>08</i><span>Anecdotes</span></a>
+          <a href="#checklist"><i>09</i><span>Carnet de route</span></a>
         </nav>
 
         <div class="sidebar-note">
@@ -94,20 +95,20 @@
     <main id="top">
       <section class="hero section-shell">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> Journal personnel · Aventurier-soldat</p>
-          <h1>Votre campagne<br /><em>commence ici.</em></h1>
+          <p class="eyebrow"><span></span> Atlas tactique · Bibliothèque de terrain</p>
+          <h1>Explorez Albion.<br /><em>Comprenez vos choix.</em></h1>
           <p class="hero-lead">
-            Une seule route lisible pour devenir autonome au combat, financer vos défaites
-            et entrer progressivement dans les vraies aventures d'Albion.
+            Un codex dense mais lisible pour apprendre les systèmes du sandbox, préparer vos
+            sorties et retrouver les détails qui font la différence une fois sur le terrain.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#mission">Préparer ma sortie <b>↓</b></a>
-            <a class="button button-ghost" href="#campagne">Voir ma route</a>
+            <a class="button button-primary" href="#codex">Explorer le codex <b>↓</b></a>
+            <a class="button button-ghost" href="#anecdotes">Lire les anecdotes</a>
           </div>
           <div class="hero-stats">
-            <div><b id="hero-stage-value">4</b><span id="hero-stage-label">chapitres de campagne</span></div>
-            <div><b id="hero-focus-value">1</b><span id="hero-focus-label">doctrine de départ</span></div>
-            <div><b id="hero-target-value">10</b><span id="hero-target-label">sets avant le luxe</span></div>
+            <div><b id="article-count">40</b><span>fiches pratiques</span></div>
+            <div><b id="anecdote-count">18</b><span>anecdotes utiles</span></div>
+            <div><b>5</b><span>familles de sujets</span></div>
           </div>
         </div>
 
@@ -128,8 +129,8 @@
             <span>N</span><i></i><b>A</b>
           </div>
           <div class="hero-seal">
-            <small>Doctrine n° 01</small>
-            <strong>Votre équipement<br />est un consommable.</strong>
+            <small>Règle de terrain n° 01</small>
+            <strong>Une sortie utile commence<br />par une intention simple.</strong>
           </div>
         </div>
       </section>
@@ -143,93 +144,27 @@
         <a href="#maintenant">Voir les nouveautés <span>→</span></a>
       </section>
 
-      <section class="profile-hub section-shell" id="profil">
-        <div class="profile-hub-heading">
-          <div>
-            <p class="eyebrow"><span></span> Centre de commandement</p>
-            <h2>Une route calculée pour votre personnage.</h2>
+      <section class="atlas-overview section-shell" id="reperes">
+        <article class="overview-main">
+          <p class="eyebrow"><span></span> Vue d'ensemble</p>
+          <h2>Le wiki devient votre base de connaissances.</h2>
+          <p>
+            L'analyse de personnage vit désormais dans Dashlbion. Ici, vous gardez une bibliothèque
+            durable : mécaniques, itinéraires d'apprentissage, économie, combat et culture du jeu.
+          </p>
+          <div class="overview-metrics">
+            <div><b>01</b><span>Choisissez un objectif de session.</span></div>
+            <div><b>02</b><span>Ouvrez la fiche utile avant de partir.</span></div>
+            <div><b>03</b><span>Revenez avec une décision à conserver.</span></div>
           </div>
-          <p>Albion ne propose pas de connexion sécurisée pour les outils tiers. L'Atlas lie uniquement un personnage public, sans mot de passe, et conserve sa fiche dans votre navigateur.</p>
-        </div>
+        </article>
 
-        <div class="profile-hub-grid">
-          <aside class="profile-link-card">
-            <div class="profile-link-top">
-              <span class="profile-rune">K</span>
-              <div>
-                <small>Personnage public</small>
-                <strong>Lier votre aventurier</strong>
-              </div>
-            </div>
-            <form id="profile-form">
-              <label>
-                <span>Nom du personnage</span>
-                <input id="player-name" name="player-name" type="text" value="Kwardax" autocomplete="off" required />
-              </label>
-              <label>
-                <span>Serveur Albion</span>
-                <select id="player-server" name="player-server">
-                  <option value="europe" selected>Europe</option>
-                  <option value="americas">Americas</option>
-                  <option value="asia">Asia</option>
-                </select>
-              </label>
-              <button class="profile-submit" id="link-profile" type="submit">Analyser le personnage <b>→</b></button>
-            </form>
-            <p class="profile-privacy">Aucun identifiant de compte n'est demandé. Seules les statistiques publiques visibles par les services communautaires sont importées.</p>
-            <p class="profile-status" id="profile-status" role="status"></p>
-          </aside>
-
-          <article class="profile-dashboard" id="profile-dashboard" aria-live="polite">
-            <div class="profile-empty" id="profile-empty">
-              <small>En attente de liaison</small>
-              <h3>Kwardax est prêt à être analysé.</h3>
-              <p>L'Atlas va lire sa trace publique sur Albion Europe et transformer les statistiques disponibles en prochain cap concret.</p>
-            </div>
-            <div class="profile-loaded" id="profile-loaded" hidden>
-              <div class="profile-identity">
-                <span class="profile-avatar" id="profile-avatar">K</span>
-                <div>
-                  <small id="profile-server">Albion Europe</small>
-                  <h3 id="profile-name">Kwardax</h3>
-                  <p id="profile-meta"></p>
-                </div>
-                <span class="profile-live"><i></i> Lié localement</span>
-              </div>
-              <div class="profile-stat-grid">
-                <div><span>Renommée PvE</span><b id="profile-pve">0</b></div>
-                <div><span>Récolte</span><b id="profile-gathering">0</b></div>
-                <div><span>Artisanat</span><b id="profile-crafting">0</b></div>
-                <div><span>Combat public</span><b id="profile-pvp">0</b></div>
-              </div>
-              <div class="profile-route">
-                <div>
-                  <small id="profile-stage">Chapitre 01</small>
-                  <h4 id="profile-route-title">Recrue en formation</h4>
-                  <p id="profile-route-copy"></p>
-                </div>
-                <ol id="profile-route-list"></ol>
-              </div>
-              <div class="profile-dashboard-footer">
-                <span id="profile-refresh-date"></span>
-                <button class="text-link" id="unlink-profile" type="button">Délier ce personnage</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="personal-brief section-shell">
-        <div>
-          <p class="eyebrow"><span></span> Votre cap personnel</p>
-          <h2 id="brief-title">Devenir un soldat autonome.</h2>
-          <p id="brief-copy">Vous n'avez pas besoin de tout apprendre en même temps. Votre priorité est de savoir sortir seul, gagner de quoi repartir et rejoindre un front quand vous voulez davantage d'action.</p>
-        </div>
-        <ul id="brief-priorities">
-          <li><b>01</b><span>Maîtriser un set simple et bon marché</span></li>
-          <li><b>02</b><span>Financer dix remplacements sans stress</span></li>
-          <li><b>03</b><span>Apprendre la faction avant le grand bain</span></li>
-        </ul>
+        <aside class="dashlbion-card">
+          <small>Compagnon de campagne</small>
+          <h3>Votre personnage reste dans Dashlbion.</h3>
+          <p>Utilisez le dashboard pour rechercher un profil public, lire ses statistiques et générer une semaine de progression. L'Atlas se concentre maintenant sur la documentation.</p>
+          <a class="button button-primary" href="../Dashlbion/">Ouvrir Dashlbion <b>→</b></a>
+        </aside>
       </section>
 
       <section class="section-block section-shell" id="mission">
@@ -321,6 +256,42 @@
             <li><b>Poursuivre</b><span>Une accélération ou un contrôle pour ne pas subir le rythme.</span></li>
             <li><b>Rompre</b><span>Une sortie préparée avant même de prendre le combat.</span></li>
           </ul>
+        </div>
+      </section>
+
+      <section class="section-block section-shell" id="parcours">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Parcours guidés</p>
+            <h2>Commencez par votre question du moment</h2>
+          </div>
+          <p>Le codex est volontairement riche. Ces quatre routes courtes évitent de lire quarante fiches avant votre prochaine sortie.</p>
+        </div>
+        <div class="reading-paths">
+          <article>
+            <small>Débuter · 4 fiches</small>
+            <h3>Je viens d'arriver</h3>
+            <p>Tutoriel, Tableau du destin, objets et premier paquetage cohérent.</p>
+            <button class="text-link open-article" data-article="premiers-pas" type="button">Commencer la route <b>→</b></button>
+          </article>
+          <article>
+            <small>Économie · 4 fiches</small>
+            <h3>Je veux financer mes sorties</h3>
+            <p>Argent de départ, récolte, ordres de marché et transport raisonné.</p>
+            <button class="text-link open-article" data-article="silver" type="button">Commencer la route <b>→</b></button>
+          </article>
+          <article>
+            <small>Survie · 4 fiches</small>
+            <h3>Je veux passer en létal</h3>
+            <p>Coût acceptable, monture, lecture des signaux faibles et retour discipliné.</p>
+            <button class="text-link open-article" data-article="survivre-lethal" type="button">Commencer la route <b>→</b></button>
+          </article>
+          <article>
+            <small>Groupe · 4 fiches</small>
+            <h3>Je veux rejoindre une compagnie</h3>
+            <p>Guilde saine, rôle lisible, petit groupe et premières batailles de masse.</p>
+            <button class="text-link open-article" data-article="guild" type="button">Commencer la route <b>→</b></button>
+          </article>
         </div>
       </section>
 
@@ -469,6 +440,22 @@
         </div>
       </section>
 
+      <section class="section-block section-shell" id="reference">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> Aide-mémoire</p>
+            <h2>Les réflexes à emporter en jeu</h2>
+          </div>
+          <p>Quelques règles sobres valent mieux qu'un tableau compliqué lorsque vous êtes déjà en mouvement.</p>
+        </div>
+        <div class="reference-grid">
+          <article><b>01</b><h3>Avant le départ</h3><p>Chiffrez votre set, choisissez votre retour et vérifiez que la perte reste acceptable.</p></article>
+          <article><b>02</b><h3>Sur le marché</h3><p>Comparez prix, volume, frais et temps de trajet. Une annonce chère n'est pas encore une vente.</p></article>
+          <article><b>03</b><h3>En zone létale</h3><p>Gardez votre monture proche, observez les noms et rentrez lorsque le butin rembourse le risque.</p></article>
+          <article><b>04</b><h3>Après une défaite</h3><p>Changez une seule décision à la fois : angle, cible, sort conservé ou combat refusé.</p></article>
+        </div>
+      </section>
+
       <section class="section-block section-shell" id="activites">
         <div class="section-heading">
           <div>
@@ -527,6 +514,12 @@
               <a href="https://albiononline.com/update/radiant-wilds" target="_blank" rel="noreferrer">Page officielle <span>↗</span></a>
             </article>
             <article>
+              <small>26 mai 2026 · Correctif vérifié</small>
+              <h3>Radiant Wilds Patch #2</h3>
+              <p>Ajuste l'équilibrage, corrige des problèmes d'interface et poursuit les améliorations après la refonte visuelle.</p>
+              <a href="https://steamdb.info/patchnotes/23411617/" target="_blank" rel="noreferrer">Notes de version <span>↗</span></a>
+            </article>
+            <article>
               <small>23 février 2026</small>
               <h3>Realm Divided II</h3>
               <p>Étend la guerre de factions avec les Étendards de bataille et un Assaut de bandits remanié.</p>
@@ -545,6 +538,26 @@
               <a href="https://albiononline.com/update/rogue-frontier" target="_blank" rel="noreferrer">Page officielle <span>↗</span></a>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section-block anecdotes-section" id="anecdotes">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow"><span></span> Culture du sandbox</p>
+              <h2>Anecdotes et détails qui éclairent Albion</h2>
+            </div>
+            <p>Des faits courts, mais pas décoratifs : chacun explique pourquoi le monde fonctionne comme il fonctionne ou révèle un détail facile à manquer.</p>
+          </div>
+          <div class="anecdote-toolbar" id="anecdote-filters">
+            <button class="filter active" data-anecdote-category="all" type="button">Tout</button>
+            <button class="filter" data-anecdote-category="economie" type="button">Économie</button>
+            <button class="filter" data-anecdote-category="monde" type="button">Monde</button>
+            <button class="filter" data-anecdote-category="combat" type="button">Combat</button>
+            <button class="filter" data-anecdote-category="histoire" type="button">Histoire</button>
+          </div>
+          <div class="anecdote-grid" id="anecdote-grid"></div>
         </div>
       </section>
 
@@ -616,6 +629,22 @@
             <summary>Le wiki remplace-t-il les notes officielles&nbsp;?</summary>
             <p>Non. Ce guide enseigne les mécanismes durables. Vérifiez toujours les correctifs officiels avant d'investir lourdement dans une arme, une activité ou un marché précis.</p>
           </details>
+          <details>
+            <summary>Où analyser mon personnage maintenant&nbsp;?</summary>
+            <p>Dans <strong>Dashlbion</strong>. Le dashboard voisin recherche le profil public, affiche les statistiques disponibles et construit une feuille de route. L'Atlas reste consacré aux explications et aux guides.</p>
+          </details>
+          <details>
+            <summary>Mon équipement est-il perdu dans les Profondeurs&nbsp;?</summary>
+            <p>Les Profondeurs utilisent une règle orange particulière : les objets de l'inventaire peuvent tomber, mais l'équipement porté est conservé. Vérifiez toujours les règles affichées avant d'entrer dans un contenu PvP.</p>
+          </details>
+          <details>
+            <summary>Pourquoi un build trouvé en ligne devient-il obsolète&nbsp;?</summary>
+            <p>Les valeurs d'équilibrage, les usages et les prix changent. Comprenez le rôle de chaque pièce, puis consultez l'Armurerie en jeu et les notes de version avant un achat coûteux.</p>
+          </details>
+          <details>
+            <summary>À quoi sert vraiment le carnet&nbsp;?</summary>
+            <p>Le carnet marque vos fiches utiles dans ce navigateur. Servez-vous-en comme liste de lecture personnelle pour préparer une activité, pas comme une collection à remplir mécaniquement.</p>
+          </details>
         </div>
       </section>
 
@@ -630,9 +659,10 @@
         </div>
         <div class="source-links">
           <a href="https://albiononline.com/" target="_blank" rel="noreferrer"><b>01</b><span>Site officiel d'Albion Online</span><i>↗</i></a>
-          <a href="https://steamdb.info/app/761890/patchnotes/" target="_blank" rel="noreferrer"><b>02</b><span>Historique des notes de version</span><i>↗</i></a>
-          <a href="https://www.albiondatabase.com/" target="_blank" rel="noreferrer"><b>03</b><span>Albion Online Database</span><i>↗</i></a>
-          <a href="https://www.albioncodex.com/" target="_blank" rel="noreferrer"><b>04</b><span>Albion Codex et calculateurs</span><i>↗</i></a>
+          <a href="https://albiononline.com/update/radiant-wilds" target="_blank" rel="noreferrer"><b>02</b><span>Page officielle Radiant Wilds</span><i>↗</i></a>
+          <a href="https://steamdb.info/app/761890/patchnotes/" target="_blank" rel="noreferrer"><b>03</b><span>Historique des notes de version</span><i>↗</i></a>
+          <a href="https://www.albiondatabase.com/" target="_blank" rel="noreferrer"><b>04</b><span>Albion Online Database</span><i>↗</i></a>
+          <a href="https://www.albioncodex.com/" target="_blank" rel="noreferrer"><b>05</b><span>Albion Codex et calculateurs</span><i>↗</i></a>
         </div>
       </section>
     </main>

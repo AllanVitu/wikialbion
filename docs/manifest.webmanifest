@@ -1,15 +1,15 @@
 {
   "id": "./",
-  "name": "Atlas d'Albion - Journal de campagne",
+  "name": "Atlas d'Albion - Codex de terrain",
   "short_name": "Atlas Albion",
-  "description": "Le journal personnel d'un aventurier-soldat avec liaison locale de personnage public et route de progression personnalisée.",
+  "description": "Un codex de terrain complet pour comprendre Albion Online, préparer vos sorties et explorer les mécaniques du sandbox.",
   "lang": "fr",
   "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f4ecdd",
-  "theme_color": "#0b2940",
+  "background_color": "#090d13",
+  "theme_color": "#090d13",
   "categories": ["education", "books", "games"],
   "icons": [
     {
@@ -39,9 +39,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Lier mon personnage",
-      "short_name": "Mon profil",
-      "url": "./#profil"
+      "name": "Lire les anecdotes",
+      "short_name": "Anecdotes",
+      "url": "./#anecdotes"
     },
     {
       "name": "Préparer ma sortie",

@@ -1,4 +1,4 @@
-const CACHE_NAME = "atlas-albion-v4";
+const CACHE_NAME = "atlas-albion-v7";
 const APP_SHELL = [
   "./",
   "./index.html",
